@@ -1,0 +1,98 @@
+name: Apple Safari
+description: Apple's web browser available across macOS, iOS, and iPadOS, providing a fast, efficient, and private browsing experience with features like Intelligent Tracking Prevention, iCloud syncing, and web standards support.
+image: https://www.apple.com/v/safari/q/images/meta/safari__bo5fx1ipmoqq_og.png
+tags:
+- web browser
+- privacy
+- apple
+- webkit
+- browser
+created: '2024'
+modified: '2024'
+url: https://www.apple.com/safari/
+apis:
+- name: Safari Extensions API
+  description: API for building Safari Web Extensions that extend and customize the browsing experience
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/safariservices/safari_web_extensions
+  baseURL: https://developer.apple.com
+  tags:
+  - extensions
+  - browser extensions
+  - web extensions
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/safariservices/safari_web_extensions
+  - type: Getting Started
+    url: https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari App Extensions API
+  description: API for creating app extensions that add features and functionality to Safari on macOS
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/safariservices/safari_app_extensions
+  baseURL: https://developer.apple.com
+  tags:
+  - app extensions
+  - macos
+  - safari extensions
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/safariservices/safari_app_extensions
+  - type: Building Guide
+    url: https://developer.apple.com/documentation/safariservices/safari_app_extensions/building_a_safari_app_extension
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari Web Content API
+  description: WebKit APIs for interacting with web content, including JavaScript evaluation and DOM manipulation
+  image: https://developer.apple.com/assets/elements/icons/webkit/webkit-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/webkit
+  baseURL: https://developer.apple.com
+  tags:
+  - webkit
+  - web content
+  - javascript
+  - dom
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/webkit
+  - type: API Reference
+    url: https://developer.apple.com/documentation/webkit/wkwebview
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari Services API
+  description: iOS and macOS API for integrating Safari functionality into apps, including Safari View Controller
+  image: https://developer.apple.com/assets/elements/icons/safari-services/safari-services-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/safariservices
+  baseURL: https://developer.apple.com
+  tags:
+  - safari services
+  - ios
+  - macos
+  - safari view controller
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/safariservices
+  - type: API Reference
+    url: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+maintainers:
+- FN: Apple Inc.
+  email: developer@apple.com
+  url: https://developer.apple.com
+common:
+- type: Developer Portal
+  url: https://developer.apple.com/safari/
+- type: Release Notes
+  url: https://developer.apple.com/documentation/safari-release-notes
+- type: Technology Preview
+  url: https://developer.apple.com/safari/technology-preview/
+- type: Resources
+  url: https://developer.apple.com/safari/resources/
+- type: Download
+  url: https://www.apple.com/safari/
