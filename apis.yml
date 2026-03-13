@@ -8,7 +8,7 @@ tags:
 - webkit
 - browser
 created: '2024'
-modified: '2024'
+modified: '2026-03-03'
 url: https://www.apple.com/safari/
 apis:
 - name: Safari Extensions API
@@ -25,6 +25,16 @@ apis:
     url: https://developer.apple.com/documentation/safariservices/safari_web_extensions
   - type: Getting Started
     url: https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension
+  - type: Adopting New APIs
+    url: https://developer.apple.com/documentation/safariservices/adopting-new-safari-web-extension-apis
+  - type: Browser Compatibility
+    url: https://developer.apple.com/documentation/safariservices/assessing-your-safari-web-extension-s-browser-compatibility
+  - type: Running Extensions
+    url: https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension
+  - type: Distribution
+    url: https://developer.apple.com/documentation/safariservices/packaging-and-distributing-safari-web-extensions-with-app-store-connect
+  - type: Safari Extensions Portal
+    url: https://developer.apple.com/safari/extensions/
   contact:
   - FN: Apple Developer Support
     url: https://developer.apple.com/contact/
@@ -60,6 +70,10 @@ apis:
     url: https://developer.apple.com/documentation/webkit
   - type: API Reference
     url: https://developer.apple.com/documentation/webkit/wkwebview
+  - type: WKWebViewConfiguration Reference
+    url: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration
+  - type: WKWebsiteDataStore Reference
+    url: https://developer.apple.com/documentation/webkit/wkwebsitedatastore
   contact:
   - FN: Apple Developer Support
     url: https://developer.apple.com/contact/
@@ -81,10 +95,129 @@ apis:
   contact:
   - FN: Apple Developer Support
     url: https://developer.apple.com/contact/
+- name: Safari Web Push API
+  description: API for sending push notifications to users through Safari on macOS, iOS, and iPadOS using the Push API, Notifications API, and Service Workers
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  baseURL: https://developer.apple.com
+  tags:
+  - web push
+  - notifications
+  - push api
+  - service workers
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - type: WWDC Video
+    url: https://developer.apple.com/videos/play/wwdc2022/10098/
+  - type: WebKit Blog Post
+    url: https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari Content Blocking API
+  description: API for creating content blockers and declarative content blocking rules in Safari web extensions to filter and block web content
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
+  baseURL: https://developer.apple.com
+  tags:
+  - content blocking
+  - ad blocking
+  - web filtering
+  - declarative net request
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
+  - type: Extension Content Blocking
+    url: https://developer.apple.com/documentation/safariservices/blocking-content-with-your-safari-web-extension
+  - type: Declarative Content Blocking
+    url: https://developer.apple.com/documentation/safariservices/adopting-declarative-content-blocking-in-safari-web-extensions
+  - type: API Reference
+    url: https://developer.apple.com/documentation/safariservices/sfcontentblockermanager
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari Developer Tools API
+  description: APIs and tools for inspecting, debugging, and optimizing web content in Safari, including Web Inspector and the ability to add custom web development tools
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/safari-developer-tools
+  baseURL: https://developer.apple.com
+  tags:
+  - developer tools
+  - web inspector
+  - debugging
+  - web development
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/safari-developer-tools
+  - type: Web Inspector
+    url: https://developer.apple.com/documentation/safari-developer-tools/web-inspector
+  - type: Adding Custom Tools
+    url: https://developer.apple.com/documentation/safariservices/adding-a-web-development-tool-to-safari-web-inspector
+  - type: Enabling Developer Features
+    url: https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features
+  - type: Inspecting iOS and iPadOS
+    url: https://developer.apple.com/documentation/safari-developer-tools/inspecting-ios
+  - type: WWDC Video
+    url: https://developer.apple.com/videos/play/wwdc2023/10262/
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Safari Authentication Services API
+  description: API for authenticating users through web services in Safari using ASWebAuthenticationSession, supporting OAuth, passkeys, and WebAuthn standards
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
+  baseURL: https://developer.apple.com
+  tags:
+  - authentication
+  - oauth
+  - passkeys
+  - webauthn
+  - sign in
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
+  - type: Authentication Services Framework
+    url: https://developer.apple.com/documentation/AuthenticationServices
+  - type: Web Authentication Guide
+    url: https://developer.apple.com/documentation/authenticationservices/authenticating-a-user-through-a-web-service
+  - type: Passkeys Overview
+    url: https://developer.apple.com/passkeys/
+  - type: Passkeys in Browser Apps
+    url: https://developer.apple.com/documentation/authenticationservices/authenticating-people-by-using-passkeys-in-browser-apps
+  - type: Supporting Passkeys
+    url: https://developer.apple.com/documentation/authenticationservices/supporting-passkeys
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
+- name: Apple Pay on the Web API
+  description: JavaScript APIs for implementing Apple Pay payments in Safari, supporting both the Apple Pay JS API and the Payment Request API
+  image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+  humanURL: https://developer.apple.com/documentation/applepayontheweb
+  baseURL: https://developer.apple.com
+  tags:
+  - apple pay
+  - payments
+  - javascript
+  - payment request
+  properties:
+  - type: Documentation
+    url: https://developer.apple.com/documentation/applepayontheweb
+  - type: Apple Pay JS API
+    url: https://developer.apple.com/documentation/applepayontheweb/apple-pay-js-api
+  - type: Implementation Guide
+    url: https://developer.apple.com/apple-pay/implementation/
+  - type: Planning Guide
+    url: https://developer.apple.com/apple-pay/planning/
+  - type: Demo
+    url: https://applepaydemo.apple.com/
+  contact:
+  - FN: Apple Developer Support
+    url: https://developer.apple.com/contact/
 maintainers:
-- FN: Apple Inc.
-  email: developer@apple.com
-  url: https://developer.apple.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
 common:
 - type: Developer Portal
   url: https://developer.apple.com/safari/
@@ -96,3 +229,19 @@ common:
   url: https://developer.apple.com/safari/resources/
 - type: Download
   url: https://www.apple.com/safari/
+- type: Tools
+  url: https://developer.apple.com/safari/tools/
+- type: Extensions Portal
+  url: https://developer.apple.com/safari/extensions/
+- type: WWDC Videos
+  url: https://developer.apple.com/videos/safari-web/
+- type: WebKit Blog
+  url: https://webkit.org/blog/
+- type: WebKit Documentation
+  url: https://docs.webkit.org/
+- type: WebKit Source
+  url: https://webkit.org/
+- type: Developer Forums
+  url: https://developer.apple.com/forums/
+- type: Bug Reporting
+  url: https://developer.apple.com/bug-reporting/
