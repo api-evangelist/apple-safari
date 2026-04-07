@@ -1,15 +1,12 @@
 name: Apple Safari
-description: Apple's web browser available across macOS, iOS, and iPadOS, 
-  providing a fast, efficient, and private browsing experience with features 
-  like Intelligent Tracking Prevention, iCloud syncing, and web standards 
-  support.
+description: Apple's web browser available across macOS, iOS, and iPadOS, providing a fast, efficient, and private browsing experience with features like Intelligent Tracking Prevention, iCloud syncing, and web standards support.
 image: https://www.apple.com/v/safari/q/images/meta/safari__bo5fx1ipmoqq_og.png
 tags:
-  - web browser
-  - privacy
-  - apple
-  - webkit
-  - browser
+  - Apple
+  - Browser
+  - Privacy
+  - Web Browser
+  - Webkit
 created: '2024'
 modified: '2026-03-03'
 url: https://www.apple.com/safari/
@@ -18,34 +15,26 @@ apis:
     description: >-
       API for building Safari Web Extensions that extend and customize the browsing
       experience.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
-    humanURL: 
-      https://developer.apple.com/documentation/safariservices/safari_web_extensions
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    humanURL: https://developer.apple.com/documentation/safariservices/safari_web_extensions
     baseURL: https://developer.apple.com
     tags:
-      - extensions
-      - browser extensions
-      - web extensions
+      - Browser Extensions
+      - Extensions
+      - Web Extensions
     properties:
       - type: Documentation
-        url: 
-          https://developer.apple.com/documentation/safariservices/safari_web_extensions
+        url: https://developer.apple.com/documentation/safariservices/safari_web_extensions
       - type: Getting Started
-        url: 
-          https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension
+        url: https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension
       - type: Adopting New APIs
-        url: 
-          https://developer.apple.com/documentation/safariservices/adopting-new-safari-web-extension-apis
+        url: https://developer.apple.com/documentation/safariservices/adopting-new-safari-web-extension-apis
       - type: Browser Compatibility
-        url: 
-          https://developer.apple.com/documentation/safariservices/assessing-your-safari-web-extension-s-browser-compatibility
+        url: https://developer.apple.com/documentation/safariservices/assessing-your-safari-web-extension-s-browser-compatibility
       - type: Running Extensions
-        url: 
-          https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension
+        url: https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension
       - type: Distribution
-        url: 
-          https://developer.apple.com/documentation/safariservices/packaging-and-distributing-safari-web-extensions-with-app-store-connect
+        url: https://developer.apple.com/documentation/safariservices/packaging-and-distributing-safari-web-extensions-with-app-store-connect
       - type: Safari Extensions Portal
         url: https://developer.apple.com/safari/extensions/
     contact:
@@ -55,22 +44,18 @@ apis:
     description: >-
       API for creating app extensions that add features and functionality to Safari
       on macOS.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
-    humanURL: 
-      https://developer.apple.com/documentation/safariservices/safari_app_extensions
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    humanURL: https://developer.apple.com/documentation/safariservices/safari_app_extensions
     baseURL: https://developer.apple.com
     tags:
-      - app extensions
-      - macos
-      - safari extensions
+      - App Extensions
+      - Macos
+      - Safari Extensions
     properties:
       - type: Documentation
-        url: 
-          https://developer.apple.com/documentation/safariservices/safari_app_extensions
+        url: https://developer.apple.com/documentation/safariservices/safari_app_extensions
       - type: Building Guide
-        url: 
-          https://developer.apple.com/documentation/safariservices/safari_app_extensions/building_a_safari_app_extension
+        url: https://developer.apple.com/documentation/safariservices/safari_app_extensions/building_a_safari_app_extension
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
@@ -78,23 +63,21 @@ apis:
     description: >-
       WebKit APIs for interacting with web content, including JavaScript evaluation
       and DOM manipulation.
-    image: 
-      https://developer.apple.com/assets/elements/icons/webkit/webkit-96x96_2x.png
+    image: https://developer.apple.com/assets/elements/icons/webkit/webkit-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/webkit
     baseURL: https://developer.apple.com
     tags:
-      - webkit
-      - web content
-      - javascript
-      - dom
+      - Dom
+      - Javascript
+      - Web Content
+      - Webkit
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/webkit
       - type: API Reference
         url: https://developer.apple.com/documentation/webkit/wkwebview
       - type: WKWebViewConfiguration Reference
-        url: 
-          https://developer.apple.com/documentation/webkit/wkwebviewconfiguration
+        url: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration
       - type: WKWebsiteDataStore Reference
         url: https://developer.apple.com/documentation/webkit/wkwebsitedatastore
     contact:
@@ -104,21 +87,19 @@ apis:
     description: >-
       iOS and macOS API for integrating Safari functionality into apps, including
       Safari View Controller.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari-services/safari-services-96x96_2x.png
+    image: https://developer.apple.com/assets/elements/icons/safari-services/safari-services-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/safariservices
     baseURL: https://developer.apple.com
     tags:
-      - safari services
-      - ios
-      - macos
-      - safari view controller
+      - Ios
+      - Macos
+      - Safari Services
+      - Safari View Controller
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safariservices
       - type: API Reference
-        url: 
-          https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
+        url: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
@@ -126,25 +107,21 @@ apis:
     description: >-
       API for sending push notifications to users through Safari on macOS, iOS, and
       iPadOS using the Push API, Notifications API, and Service Workers.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
-    humanURL: 
-      https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    humanURL: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
     baseURL: https://developer.apple.com
     tags:
-      - web push
-      - notifications
-      - push api
-      - service workers
+      - Notifications
+      - Push Api
+      - Service Workers
+      - Web Push
     properties:
       - type: Documentation
-        url: 
-          https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+        url: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
       - type: WWDC Video
         url: https://developer.apple.com/videos/play/wwdc2022/10098/
       - type: WebKit Blog Post
-        url: 
-          https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/
+        url: https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
@@ -152,29 +129,23 @@ apis:
     description: >-
       API for creating content blockers and declarative content blocking rules in
       Safari web extensions to filter and block web content.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
-    humanURL: 
-      https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    humanURL: https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
     baseURL: https://developer.apple.com
     tags:
-      - content blocking
-      - ad blocking
-      - web filtering
-      - declarative net request
+      - Ad Blocking
+      - Content Blocking
+      - Declarative Net Request
+      - Web Filtering
     properties:
       - type: Documentation
-        url: 
-          https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
+        url: https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
       - type: Extension Content Blocking
-        url: 
-          https://developer.apple.com/documentation/safariservices/blocking-content-with-your-safari-web-extension
+        url: https://developer.apple.com/documentation/safariservices/blocking-content-with-your-safari-web-extension
       - type: Declarative Content Blocking
-        url: 
-          https://developer.apple.com/documentation/safariservices/adopting-declarative-content-blocking-in-safari-web-extensions
+        url: https://developer.apple.com/documentation/safariservices/adopting-declarative-content-blocking-in-safari-web-extensions
       - type: API Reference
-        url: 
-          https://developer.apple.com/documentation/safariservices/sfcontentblockermanager
+        url: https://developer.apple.com/documentation/safariservices/sfcontentblockermanager
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
@@ -182,30 +153,25 @@ apis:
     description: >-
       APIs and tools for inspecting, debugging, and optimizing web content in Safari,
       including Web Inspector and the ability to add custom web development tools.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/safari-developer-tools
     baseURL: https://developer.apple.com
     tags:
-      - developer tools
-      - web inspector
-      - debugging
-      - web development
+      - Debugging
+      - Developer Tools
+      - Web Development
+      - Web Inspector
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safari-developer-tools
       - type: Web Inspector
-        url: 
-          https://developer.apple.com/documentation/safari-developer-tools/web-inspector
+        url: https://developer.apple.com/documentation/safari-developer-tools/web-inspector
       - type: Adding Custom Tools
-        url: 
-          https://developer.apple.com/documentation/safariservices/adding-a-web-development-tool-to-safari-web-inspector
+        url: https://developer.apple.com/documentation/safariservices/adding-a-web-development-tool-to-safari-web-inspector
       - type: Enabling Developer Features
-        url: 
-          https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features
+        url: https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features
       - type: Inspecting iOS and iPadOS
-        url: 
-          https://developer.apple.com/documentation/safari-developer-tools/inspecting-ios
+        url: https://developer.apple.com/documentation/safari-developer-tools/inspecting-ios
       - type: WWDC Video
         url: https://developer.apple.com/videos/play/wwdc2023/10262/
     contact:
@@ -215,34 +181,28 @@ apis:
     description: >-
       API for authenticating users through web services in Safari using ASWebAuthenticationSession,
       supporting OAuth, passkeys, and WebAuthn standards.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
-    humanURL: 
-      https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    humanURL: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
     baseURL: https://developer.apple.com
     tags:
-      - authentication
-      - oauth
-      - passkeys
-      - webauthn
-      - sign in
+      - Authentication
+      - Oauth
+      - Passkeys
+      - Sign In
+      - Webauthn
     properties:
       - type: Documentation
-        url: 
-          https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
+        url: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
       - type: Authentication Services Framework
         url: https://developer.apple.com/documentation/AuthenticationServices
       - type: Web Authentication Guide
-        url: 
-          https://developer.apple.com/documentation/authenticationservices/authenticating-a-user-through-a-web-service
+        url: https://developer.apple.com/documentation/authenticationservices/authenticating-a-user-through-a-web-service
       - type: Passkeys Overview
         url: https://developer.apple.com/passkeys/
       - type: Passkeys in Browser Apps
-        url: 
-          https://developer.apple.com/documentation/authenticationservices/authenticating-people-by-using-passkeys-in-browser-apps
+        url: https://developer.apple.com/documentation/authenticationservices/authenticating-people-by-using-passkeys-in-browser-apps
       - type: Supporting Passkeys
-        url: 
-          https://developer.apple.com/documentation/authenticationservices/supporting-passkeys
+        url: https://developer.apple.com/documentation/authenticationservices/supporting-passkeys
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
@@ -250,21 +210,19 @@ apis:
     description: >-
       JavaScript APIs for implementing Apple Pay payments in Safari, supporting both
       the Apple Pay JS API and the Payment Request API.
-    image: 
-      https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
+    image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/applepayontheweb
     baseURL: https://developer.apple.com
     tags:
-      - apple pay
-      - payments
-      - javascript
-      - payment request
+      - Apple Pay
+      - Javascript
+      - Payment Request
+      - Payments
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/applepayontheweb
       - type: Apple Pay JS API
-        url: 
-          https://developer.apple.com/documentation/applepayontheweb/apple-pay-js-api
+        url: https://developer.apple.com/documentation/applepayontheweb/apple-pay-js-api
       - type: Implementation Guide
         url: https://developer.apple.com/apple-pay/implementation/
       - type: Planning Guide
