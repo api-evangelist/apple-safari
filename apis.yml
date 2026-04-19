@@ -8,7 +8,7 @@ tags:
   - Web Browser
   - Webkit
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-04-19'
 url: https://www.apple.com/safari/
 apis:
   - name: Safari Extensions API
@@ -25,17 +25,17 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/safari_web_extensions
-      - type: Getting Started
+      - type: GettingStarted
         url: https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension
-      - type: Adopting New APIs
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/adopting-new-safari-web-extension-apis
-      - type: Browser Compatibility
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/assessing-your-safari-web-extension-s-browser-compatibility
-      - type: Running Extensions
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension
-      - type: Distribution
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/packaging-and-distributing-safari-web-extensions-with-app-store-connect
-      - type: Safari Extensions Portal
+      - type: Portal
         url: https://developer.apple.com/safari/extensions/
     contact:
       - FN: Apple Developer Support
@@ -54,7 +54,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/safari_app_extensions
-      - type: Building Guide
+      - type: GettingStarted
         url: https://developer.apple.com/documentation/safariservices/safari_app_extensions/building_a_safari_app_extension
     contact:
       - FN: Apple Developer Support
@@ -74,11 +74,11 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/webkit
-      - type: API Reference
+      - type: APIReference
         url: https://developer.apple.com/documentation/webkit/wkwebview
-      - type: WKWebViewConfiguration Reference
+      - type: APIReference
         url: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration
-      - type: WKWebsiteDataStore Reference
+      - type: APIReference
         url: https://developer.apple.com/documentation/webkit/wkwebsitedatastore
     contact:
       - FN: Apple Developer Support
@@ -98,7 +98,7 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safariservices
-      - type: API Reference
+      - type: APIReference
         url: https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller
     contact:
       - FN: Apple Developer Support
@@ -118,9 +118,9 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
-      - type: WWDC Video
+      - type: Documentation
         url: https://developer.apple.com/videos/play/wwdc2022/10098/
-      - type: WebKit Blog Post
+      - type: Blog
         url: https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/
     contact:
       - FN: Apple Developer Support
@@ -140,11 +140,11 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/creating-a-content-blocker
-      - type: Extension Content Blocking
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/blocking-content-with-your-safari-web-extension
-      - type: Declarative Content Blocking
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/adopting-declarative-content-blocking-in-safari-web-extensions
-      - type: API Reference
+      - type: APIReference
         url: https://developer.apple.com/documentation/safariservices/sfcontentblockermanager
     contact:
       - FN: Apple Developer Support
@@ -164,15 +164,15 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/safari-developer-tools
-      - type: Web Inspector
+      - type: Documentation
         url: https://developer.apple.com/documentation/safari-developer-tools/web-inspector
-      - type: Adding Custom Tools
+      - type: Documentation
         url: https://developer.apple.com/documentation/safariservices/adding-a-web-development-tool-to-safari-web-inspector
-      - type: Enabling Developer Features
+      - type: GettingStarted
         url: https://developer.apple.com/documentation/safari-developer-tools/enabling-developer-features
-      - type: Inspecting iOS and iPadOS
+      - type: Documentation
         url: https://developer.apple.com/documentation/safari-developer-tools/inspecting-ios
-      - type: WWDC Video
+      - type: Documentation
         url: https://developer.apple.com/videos/play/wwdc2023/10262/
     contact:
       - FN: Apple Developer Support
@@ -193,15 +193,15 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
-      - type: Authentication Services Framework
+      - type: Documentation
         url: https://developer.apple.com/documentation/AuthenticationServices
-      - type: Web Authentication Guide
+      - type: Documentation
         url: https://developer.apple.com/documentation/authenticationservices/authenticating-a-user-through-a-web-service
-      - type: Passkeys Overview
+      - type: Documentation
         url: https://developer.apple.com/passkeys/
-      - type: Passkeys in Browser Apps
+      - type: Documentation
         url: https://developer.apple.com/documentation/authenticationservices/authenticating-people-by-using-passkeys-in-browser-apps
-      - type: Supporting Passkeys
+      - type: Documentation
         url: https://developer.apple.com/documentation/authenticationservices/supporting-passkeys
     contact:
       - FN: Apple Developer Support
@@ -221,13 +221,13 @@ apis:
     properties:
       - type: Documentation
         url: https://developer.apple.com/documentation/applepayontheweb
-      - type: Apple Pay JS API
+      - type: APIReference
         url: https://developer.apple.com/documentation/applepayontheweb/apple-pay-js-api
-      - type: Implementation Guide
+      - type: GettingStarted
         url: https://developer.apple.com/apple-pay/implementation/
-      - type: Planning Guide
+      - type: Documentation
         url: https://developer.apple.com/apple-pay/planning/
-      - type: Demo
+      - type: Sandbox
         url: https://applepaydemo.apple.com/
     contact:
       - FN: Apple Developer Support
@@ -237,29 +237,23 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
-  - type: Developer Portal
+  - type: DeveloperPortal
     url: https://developer.apple.com/safari/
-  - type: Release Notes
+  - type: ReleaseNotes
     url: https://developer.apple.com/documentation/safari-release-notes
-  - type: Technology Preview
-    url: https://developer.apple.com/safari/technology-preview/
   - type: Resources
     url: https://developer.apple.com/safari/resources/
-  - type: Download
-    url: https://www.apple.com/safari/
-  - type: Tools
-    url: https://developer.apple.com/safari/tools/
-  - type: Extensions Portal
-    url: https://developer.apple.com/safari/extensions/
-  - type: WWDC Videos
-    url: https://developer.apple.com/videos/safari-web/
-  - type: WebKit Blog
+  - type: Blog
     url: https://webkit.org/blog/
-  - type: WebKit Documentation
+  - type: Documentation
     url: https://docs.webkit.org/
-  - type: WebKit Source
-    url: https://webkit.org/
-  - type: Developer Forums
+  - type: YouTube
+    url: https://developer.apple.com/videos/safari-web/
+  - type: Support
     url: https://developer.apple.com/forums/
-  - type: Bug Reporting
-    url: https://developer.apple.com/bug-reporting/
+  - type: Features
+    url: https://www.apple.com/safari/
+  - type: UseCases
+    url: https://developer.apple.com/safari/
+  - type: Integrations
+    url: https://developer.apple.com/safari/extensions/
