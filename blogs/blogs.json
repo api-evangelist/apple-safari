@@ -1,0 +1,13 @@
+{
+  "repo": "apple-safari",
+  "feeds": [
+    {
+      "source": "https://webkit.org/blog/",
+      "feed_url": "https://webkit.org/feed/",
+      "saved": 10,
+      "title": "WebKit"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:22:27Z"
+}
