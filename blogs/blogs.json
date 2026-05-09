@@ -3,11 +3,17 @@
   "feeds": [
     {
       "source": "https://webkit.org/blog/",
-      "feed_url": "https://webkit.org/feed/",
-      "saved": 10,
-      "title": "WebKit"
+      "feed_url": "https://webkit.org/blog/feed/",
+      "title": "Blog \u2013 WebKit",
+      "saved": 1
+    },
+    {
+      "source": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/",
+      "feed_url": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/feed/",
+      "title": "Comments on: Web Push for Web Apps on iOS and iPadOS",
+      "saved": 0
     }
   ],
-  "post_count": 10,
-  "fetched": "2026-05-03T23:22:27Z"
+  "post_count": 11,
+  "fetched": "2026-05-09T20:17:51Z"
 }
