@@ -232,6 +232,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
+integrations:
+  - name: Try it free 3
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
