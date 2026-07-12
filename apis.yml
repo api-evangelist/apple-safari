@@ -239,6 +239,10 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: VulnerabilityDisclosure
+    url: security/apple-safari-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/apple-safari-domain-security.yml
   - type: DeveloperPortal
     url: https://developer.apple.com/safari/
   - type: ReleaseNotes
