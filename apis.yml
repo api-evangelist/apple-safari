@@ -1,5 +1,6 @@
 name: Apple Safari
 description: Apple's web browser available across macOS, iOS, and iPadOS, providing a fast, efficient, and private browsing experience with features like Intelligent Tracking Prevention, iCloud syncing, and web standards support.
+specificationVersion: '0.23'
 accessModel:
   pricing: freemium
   onboarding: unknown
