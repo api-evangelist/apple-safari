@@ -73,7 +73,7 @@ apis:
     baseURL: https://developer.apple.com
     tags:
       - App Extensions
-      - Macos
+      - macOS
       - Safari Extensions
     tags_raw:
       - App Extensions
@@ -95,8 +95,8 @@ apis:
     humanURL: https://developer.apple.com/documentation/webkit
     baseURL: https://developer.apple.com
     tags:
-      - Dom
-      - Javascript
+      - DOM
+      - JavaScript
       - Web Content
       - Webkit
     tags_raw:
@@ -124,8 +124,8 @@ apis:
     humanURL: https://developer.apple.com/documentation/safariservices
     baseURL: https://developer.apple.com
     tags:
-      - Ios
-      - Macos
+      - iOS
+      - macOS
       - Safari Services
       - Safari View Controller
     tags_raw:
@@ -231,7 +231,7 @@ apis:
       - Authentication
       - Passkeys
       - Sign In
-      - Webauthn
+      - WebAuthn
     tags_raw:
       - Authentication
       - Oauth
@@ -263,7 +263,7 @@ apis:
     baseURL: https://developer.apple.com
     tags:
       - Apple Pay
-      - Javascript
+      - JavaScript
       - Payment Request
       - Payments
     tags_raw:
