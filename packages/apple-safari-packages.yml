@@ -1,0 +1,85 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  Apple developer documentation plus unauthenticated registry metadata lookups against
+  registry.npmjs.org
+specification: API Commons Packages
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  First-party client distribution for the Safari developer surface. Apple ships almost
+  nothing for Safari through a public package registry: the browser-facing APIs
+  (Web Extensions, WebKit, SafariServices, Web Push, WebAuthn, Payment Request) are
+  platform APIs already present in Safari, and the developer tooling is bundled inside
+  Safari, Safari Technology Preview and Xcode rather than published to npm, PyPI or
+  Homebrew. The one first-party JavaScript library Apple distributes for the web is the
+  Apple Pay SDK, served unversioned from Apple's own CDN.
+package_count: 3
+official_registry_packages: 0
+packages:
+  - name: apple-pay-sdk.js
+    official: true
+    registry: cdn
+    language: javascript
+    url: https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js
+    version: null
+    published: null
+    description: >-
+      Apple Pay SDK for the web. Loaded with a script tag; defines the
+      <apple-pay-button> custom element and the Apple Pay JS entry points.
+    docs: https://developer.apple.com/documentation/applepayontheweb/displaying-apple-pay-buttons-using-javascript
+    note: >-
+      Unpinned CDN distribution — checked 2026-09-07, nothing to record. Apple's own
+      documentation instructs developers to load the path `1.latest`, which floats to
+      whatever build Apple is currently serving; the file exposes no version string.
+      A second path, /jsapi/v1/apple-pay-sdk.js, is also live and serves a DIFFERENT
+      build (166,040 bytes vs 58,017 bytes at 1.latest, different MD5). There is no
+      registry metadata endpoint and no pinned URL, so a consumer cannot tell which
+      build they are getting either. Probed 2026-09-07: both paths HTTP 200,
+      ETag "7350162cd6fa296bb88c2b8054982c36" on 1.latest.
+  - name: safaridriver
+    official: true
+    registry: bundled
+    language: native
+    url: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+    version: null
+    published: null
+    binary_path: /usr/bin/safaridriver
+    description: >-
+      W3C WebDriver driver for Safari, and — with the --mcp flag added in Safari 27
+      beta / Safari Technology Preview 247 — the Safari MCP server. Bundled with the
+      operating system and with Safari Technology Preview.
+    note: >-
+      Checked 2026-09-07, nothing to record. Ships inside Safari; there is no registry
+      release and no independent version number — its version tracks the installed
+      Safari build. The npm package literally named `safaridriver` (latest 1.0.1,
+      published 2025-12-30) is webdriverio-community/node-safaridriver, a THIRD-PARTY
+      wrapper, and is deliberately not listed here as an Apple package.
+  - name: safari-web-extension-converter
+    official: true
+    registry: bundled
+    language: native
+    url: https://developer.apple.com/documentation/safariservices/converting-a-web-extension-for-safari
+    version: null
+    published: null
+    binary_path: xcrun safari-web-extension-converter
+    description: >-
+      Xcode command-line tool that converts a Chrome/Firefox web extension into a Safari
+      web extension Xcode project.
+    note: >-
+      Checked 2026-09-07, nothing to record. Distributed inside Xcode and invoked
+      through xcrun; no public registry entry exists, and its version tracks the
+      installed Xcode.
+registries_checked:
+  - registry: npm
+    result: no first-party Apple/WebKit package for the Safari surface
+    evidence: 'registry.npmjs.org lookups — @apple/apple-pay-sdk 404, safari-web-extension-converter 404, @webkit/webkit 404; `safaridriver` 200 but owned by webdriverio-community'
+  - registry: pypi
+    result: not applicable — no Python client surface
+  - registry: maven
+    result: not applicable — no JVM client surface
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

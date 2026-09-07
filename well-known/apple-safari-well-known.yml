@@ -1,0 +1,117 @@
+generated: '2026-09-07'
+method: probed
+source: live HTTPS probes of every host in apis.yml plus the registrable domain and www
+description: >-
+  Probe of the five canonical /.well-known/ discovery documents across every host this
+  record knows. One real document was served: apple.com and www.apple.com both return a
+  valid RFC 9116 security.txt. developer.apple.com answers every /.well-known/ path with
+  HTTP 300 and an 83 KB HTML page — a catch-all, not a document. webkit.org,
+  docs.webkit.org and security.apple.com serve none of these paths.
+hosts:
+  - host: apple.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain
+        file: apple-safari-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: www.apple.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        content_type: text/plain
+        file: apple-safari-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: developer.apple.com
+    note: >-
+      Every /.well-known/ path returns HTTP 300 with an 83 KB text/html body. This is a
+      catch-all response, not a served document; treated as a miss.
+    documents:
+      - path: /.well-known/security.txt
+        status: 300
+      - path: /.well-known/openid-configuration
+        status: 300
+      - path: /.well-known/oauth-authorization-server
+        status: 300
+      - path: /.well-known/api-catalog
+        status: 300
+      - path: /.well-known/ai-plugin.json
+        status: 300
+  - host: webkit.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: docs.webkit.org
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: security.apple.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 403
+agent_card:
+  probed: true
+  result: not_served
+  note: >-
+    /.well-known/agent-card.json and the legacy /.well-known/agent.json were probed on
+    all six hosts. No host returned a 200 with an AgentCard-shaped JSON object, so no
+    a2a/ artifact and no AgentCard pointer were written.
+  probes:
+    - url: https://apple.com/.well-known/agent-card.json
+      status: 404
+    - url: https://www.apple.com/.well-known/agent-card.json
+      status: 404
+    - url: https://developer.apple.com/.well-known/agent-card.json
+      status: 300
+    - url: https://webkit.org/.well-known/agent-card.json
+      status: 404
+    - url: https://docs.webkit.org/.well-known/agent-card.json
+      status: 404
+    - url: https://security.apple.com/.well-known/agent-card.json
+      status: 403
+    - url: https://apple.com/.well-known/agent.json
+      status: 404
+    - url: https://www.apple.com/.well-known/agent.json
+      status: 404
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

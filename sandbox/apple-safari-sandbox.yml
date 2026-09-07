@@ -1,0 +1,70 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://developer.apple.com/apple-pay/sandbox-testing/,
+  https://developer.apple.com/documentation/applepayontheweb/setting-up-your-server,
+  https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+specification: API Commons Sandbox
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Apple ships real, separately-addressed test environments for the two Safari surfaces
+  where a mistake costs something: Apple Pay has its own certification gateway on its own
+  hostnames and IP ranges, and safaridriver isolates every automation session in a
+  throwaway browser profile. No test values, cards or tokens are reproduced here — Apple
+  issues those per-account behind sign-in.
+environments:
+  - name: Apple Pay sandbox (certification gateway)
+    kind: separate host
+    production_host: apple-pay-gateway.apple.com
+    sandbox_host: apple-pay-gateway-cert.apple.com
+    sandbox_host_china: cn-apple-pay-gateway-cert.apple.com
+    docs: https://developer.apple.com/apple-pay/sandbox-testing/
+    detail: >-
+      Apple publishes distinct sandbox gateway domains and IP allow lists and states:
+      "Use the IP addresses in Listing 2 for development and sandbox testing only. Do not
+      allow your production apps or production servers to use these testing services in
+      production." Separation is by hostname, not by a key prefix or a mode flag.
+    test_accounts: >-
+      Apple Pay sandbox testing requires a sandbox tester account created in App Store
+      Connect and test cards Apple issues to enrolled developers. Values are
+      account-specific and behind sign-in; none are reproduced here.
+    probed:
+      - url: https://apple-pay-gateway-cert.apple.com/
+        status: 404
+        checked: '2026-09-07'
+        note: Root path 404s; the gateway answers only the documented /paymentservices/paymentSession endpoint under mutual TLS.
+  - name: Apple Pay Demo
+    kind: hosted demo
+    url: https://applepaydemo.apple.com/
+    docs: https://developer.apple.com/apple-pay/implementation/
+    detail: >-
+      Apple's public, no-signup demonstration of the Apple Pay on the Web payment sheet
+      and button. Probed 2026-09-07, HTTP 200.
+  - name: safaridriver automation windows
+    kind: isolated runtime
+    docs: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+    detail: >-
+      "Test execution is confined to special automation windows that are isolated from
+      normal browsing windows, user settings, and preferences… Like a private browsing
+      session, an automation session always starts from a clean slate. It can't access
+      Safari's browsing history, AutoFill data, or other sensitive information." A
+      transparent glass pane blocks stray interaction during a run. This is the isolation
+      an agent driving the Safari MCP server inherits.
+  - name: Safari Technology Preview
+    kind: parallel browser build
+    url: https://developer.apple.com/safari/technology-preview/
+    detail: >-
+      Installs alongside release Safari with its own profile and its own safaridriver
+      binary, so unreleased WebKit behaviour can be exercised without disturbing the
+      release browser.
+key_prefixes:
+  published: false
+  note: Apple uses no test-vs-live key prefix scheme on this surface; separation is by hostname and by certificate.
+time_simulation:
+  published: false
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

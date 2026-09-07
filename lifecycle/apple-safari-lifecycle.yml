@@ -1,0 +1,78 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://developer.apple.com/documentation/safari-release-notes,
+  https://developer.apple.com/system-status/,
+  https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+specification: API Commons Lifecycle
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Versioning, release cadence, status reporting and deprecation posture for the Safari
+  developer surface.
+versioning:
+  scheme: product version, not URL or header
+  detail: >-
+    Safari APIs version with the browser release. Apple publishes release notes per
+    Safari version (currently Safari 26.0 through 26.6, plus Safari 27 Beta) and runs a
+    separate Safari Technology Preview train shipping roughly every two weeks (STP 237
+    through STP 251 during 2026). Apple Pay JS carries an additional integer API version
+    — features such as ApplePayError and the phoneticName contact field require Apple Pay
+    API version 3 or later.
+  current:
+    stable: Safari 26.6
+    beta: Safari 27 Beta
+    preview: Safari Technology Preview 251
+  release_notes: https://developer.apple.com/documentation/safari-release-notes
+status_page:
+  published: true
+  url: https://developer.apple.com/system-status/
+  scope: Apple Developer system services
+  additional:
+    - url: https://www.apple.com/support/systemstatus/
+      scope: Apple consumer services
+  probed:
+    - url: https://developer.apple.com/system-status/
+      status: 200
+      checked: '2026-09-07'
+deprecation_policy:
+  published: false
+  detail: >-
+    No dedicated Safari or WebKit API deprecation policy is published, and no Sunset or
+    Deprecation response headers (RFC 8594) are documented on any Safari surface. The
+    Safari 26.6 release notes carry no Deprecations section. WebKit does publish a
+    Feature Policy and per-specification standards positions, but those govern what gets
+    implemented, not how implemented API is retired. Recorded as absent rather than
+    inferred.
+  checked: '2026-09-07'
+  evidence:
+    - url: https://developer.apple.com/documentation/safari-release-notes
+      status: 200
+      note: Per-version release notes exist; no cross-version deprecation policy page.
+deprecated:
+  - name: Start Session (Apple Pay merchant validation)
+    replacement: Payment Session
+    surface: Apple Pay on the Web
+    status: being phased out
+    evidence: https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+    detail: '"Start Session is being phased out and replaced by Payment Session." No sunset date is published.'
+  - name: WebKit Feature Status page
+    replacement: MDN and Can I Use for support data; WebKit Standards Positions for specification positions
+    surface: developer resources
+    status: retired
+    evidence: https://webkit.org/status/
+    detail: >-
+      Probed 2026-09-07 — HTTP 200, but the body reads "The WebKit Feature status page
+      has been retired." A soft-retirement: the URL still resolves. No Roadmap pointer is
+      emitted for it for this reason.
+sla:
+  published: false
+  detail: No service level agreement is published for the Apple Web Push service or the Apple Pay gateways.
+support:
+  url: https://developer.apple.com/forums/
+  paid_technical_support: Code-level technical support is included with Apple Developer Program membership.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

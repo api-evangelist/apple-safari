@@ -1,0 +1,87 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://developer.apple.com/documentation/safari-release-notes and the WebKit blog
+  feed already harvested into blogs/ in this repository
+specification: API Commons ChangeLog
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Safari ships two dated change streams. Release notes are published per Safari version
+  at developer.apple.com; WebKit additionally posts a "WebKit Features in Safari X"
+  article and a Safari Technology Preview release-note post to webkit.org for every
+  build. Entries below are the recent window only, dated from the WebKit blog posts
+  harvested into this repository.
+scheme: product version (Safari MAJOR.MINOR), with a parallel Safari Technology Preview build number
+current_version: Safari 26.6
+current_beta: Safari 27 Beta
+current_preview: Safari Technology Preview 251
+urls:
+  release_notes: https://developer.apple.com/documentation/safari-release-notes
+  blog: https://webkit.org/blog/
+entries:
+  - version: Safari Technology Preview 251
+    date: '2026-08-26'
+    type: preview
+    url: https://webkit.org/blog/
+    breaking: false
+    highlights:
+      - Safari Technology Preview 251 release notes.
+  - version: Safari 26.6
+    date: '2026-07-27'
+    type: stable
+    url: https://developer.apple.com/documentation/safari-release-notes
+    breaking: false
+    highlights:
+      - WebKit features shipping in Safari 26.6.
+  - version: Safari Technology Preview 247
+    date: '2026-07-01'
+    type: preview
+    url: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+    breaking: false
+    additions:
+      - >-
+        Safari MCP server introduced — a Model Context Protocol server exposing 17 tools
+        over stdio via `safaridriver --mcp`, in Safari 27 beta and Safari Technology
+        Preview 247. The single most significant agent-facing addition to the Safari
+        surface.
+  - version: Safari 27 Beta
+    date: '2026-06-08'
+    type: beta
+    url: https://developer.apple.com/documentation/safari-release-notes
+    breaking: false
+    highlights:
+      - WebKit in Safari 27 beta announced at WWDC26.
+  - version: Safari 26.5
+    date: '2026-05-11'
+    type: stable
+    url: https://developer.apple.com/documentation/safari-release-notes
+    breaking: false
+    highlights:
+      - WebKit features shipping in Safari 26.5.
+  - version: Safari 26.4
+    date: '2026-03-24'
+    type: stable
+    url: https://developer.apple.com/documentation/safari-release-notes
+    breaking: false
+    highlights:
+      - WebKit features shipping in Safari 26.4.
+  - version: Safari 26.3
+    date: '2026-02-11'
+    type: stable
+    url: https://developer.apple.com/documentation/safari-release-notes
+    breaking: false
+    highlights:
+      - WebKit features shipping in Safari 26.3.
+cadence:
+  stable: roughly every 6-8 weeks alongside macOS/iOS point releases
+  preview: Safari Technology Preview builds roughly every two weeks
+note: >-
+  Dates are the publication dates of the corresponding WebKit blog announcements, which
+  are the dated record; Apple's release-note pages themselves are not individually dated
+  in the DocC data.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

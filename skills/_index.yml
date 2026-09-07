@@ -1,0 +1,56 @@
+generated: '2026-09-07'
+method: generated
+source: >-
+  https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/ and
+  https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Packaged Agent Skills for the Safari developer surface. There is no OpenAPI to ground
+  these in — Apple publishes none for Safari — so every operation named is either a real
+  tool from WebKit's published Safari MCP server tool table or a real documented HTTP
+  header, status code or reason code from Apple's Web Push documentation. Nothing is
+  invented.
+skill_count: 3
+skills:
+  - name: debug-page-in-safari
+    file: apple-safari-debug-page-in-safari.md
+    api: Safari MCP server
+    description: Reproduce and diagnose a rendering or JavaScript bug in real Safari via the Safari MCP server.
+    operations:
+      - create_tab
+      - navigate_to_url
+      - wait_for_navigation
+      - browser_console_messages
+      - list_network_requests
+      - get_network_request
+      - get_page_content
+      - screenshot
+  - name: check-responsive-and-media
+    file: apple-safari-check-responsive-and-media.md
+    api: Safari MCP server
+    description: Verify layout across viewports and under an emulated CSS media type in real Safari.
+    operations:
+      - set_viewport_size
+      - set_emulated_media
+      - screenshot
+      - evaluate_javascript
+      - close_tab
+  - name: send-a-web-push
+    file: apple-safari-send-a-web-push.md
+    api: Safari Web Push API
+    description: Send an RFC 8030 / VAPID web push to a Safari subscriber with correct headers, size limit and error handling.
+    operations:
+      - 'POST <subscription endpoint>'
+provider_published_skills:
+  found: false
+  checked:
+    - url: https://developer.apple.com/llms.txt
+      status: 404
+    - url: https://webkit.org/llms.txt
+      status: 404
+  note: Apple publishes no AGENTS.md or skills bundle for the Safari surface.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

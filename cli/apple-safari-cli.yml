@@ -1,0 +1,63 @@
+generated: '2026-09-07'
+method: searched
+source: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+specification: API Commons CLI
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Apple ships two first-party command-line tools for the Safari developer surface. Both
+  are bundled rather than installed from a package manager: `safaridriver` comes with
+  the operating system and with Safari Technology Preview, and
+  `safari-web-extension-converter` comes with Xcode and is invoked through `xcrun`.
+cli_count: 2
+clis:
+  - name: safaridriver
+    binary: /usr/bin/safaridriver
+    official: true
+    install:
+      - method: bundled
+        detail: Installed with macOS. Safari Technology Preview ships its own copy at "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver".
+    docs: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+    description: >-
+      Safari's W3C WebDriver implementation. It hosts a local web server that accepts
+      REST-style HTTP automation commands, so any WebDriver-compatible client library
+      (Selenium in Python, Java, PHP, JavaScript and others) can drive Safari without
+      browser-specific code. Since Safari 27 beta / Safari Technology Preview 247 the
+      same binary also serves the Safari MCP server when run with --mcp.
+    surface:
+      - group: automation
+        detail: >-
+          Runs a local W3C WebDriver REST endpoint. Test execution is confined to
+          isolated automation windows (recognisable by their orange Smart Search field)
+          that start from a clean slate and cannot reach browsing history or AutoFill.
+          Only one Safari instance and one WebDriver session can be active at a time.
+      - group: mcp
+        detail: '`safaridriver --mcp` starts the Safari MCP server over stdio. See mcp/apple-safari-mcp.yml.'
+    capabilities:
+      - name: 'safari:automaticInspection'
+        description: Preloads Web Inspector and the JavaScript debugger in the background; a `debugger;` statement in the page pauses execution and brings up the Debugger tab.
+      - name: 'safari:automaticProfiling'
+        description: Preloads Web Inspector and starts a timeline recording in the background.
+    prerequisites:
+      - 'Safari > Settings > Advanced > Show features for web developers'
+      - 'Safari > Settings > Developer > Allow remote automation and external agents'
+    note: >-
+      Documented flags beyond --mcp were not transcribed verbatim from the man page and
+      are therefore not listed here; only what Apple's published documentation states is
+      recorded.
+  - name: safari-web-extension-converter
+    binary: xcrun safari-web-extension-converter
+    official: true
+    install:
+      - method: bundled
+        detail: Ships with Xcode; invoked through xcrun.
+    docs: https://developer.apple.com/documentation/safariservices/converting-a-web-extension-for-safari
+    description: >-
+      Converts an existing Chrome or Firefox web extension into a Safari web extension
+      Xcode project, so a cross-browser extension can be packaged and distributed
+      through App Store Connect.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

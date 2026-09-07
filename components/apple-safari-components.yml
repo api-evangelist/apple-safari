@@ -1,0 +1,59 @@
+generated: '2026-09-07'
+method: searched
+source: https://developer.apple.com/documentation/applepayontheweb/displaying-apple-pay-buttons-using-javascript
+specification: API Commons Components
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Client-side, embeddable UI surfaces Apple publishes for Safari. The one true web
+  component is the Apple Pay button custom element; the Apple Pay payment sheet itself
+  is a hosted, browser-rendered surface a site invokes rather than embeds.
+component_count: 2
+families:
+  - name: Apple Pay on the Web
+    loader:
+      script: https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js
+      note: Unpinned CDN path; see packages/apple-safari-packages.yml.
+    components:
+      - name: apple-pay-button
+        type: web-component
+        element: '<apple-pay-button>'
+        docs: https://developer.apple.com/documentation/applepayontheweb/displaying-apple-pay-buttons-using-javascript
+        description: >-
+          Custom element that renders an Apple Pay button in one of Apple's approved
+          styles, types and locales, and starts the payment flow when tapped.
+        attributes:
+          - name: buttonstyle
+            description: Button colour style (e.g. black).
+          - name: type
+            description: Button call-to-action type (e.g. buy).
+          - name: locale
+            description: BCP 47 locale for the button label (e.g. el-GR).
+        css_custom_properties:
+          - name: '--apple-pay-button-width'
+            description: Width of the button. Minimum 100px for a plain button, 140px for all other types; the button renders at the minimum when a smaller value is given.
+          - name: '--apple-pay-button-height'
+            description: Height of the button. Default and minimum 30px.
+          - name: '--apple-pay-button-border-radius'
+            description: Corner radius. Default 4px.
+          - name: '--apple-pay-button-padding'
+            description: Padding on each side. Default 0px.
+          - name: '--apple-pay-button-box-sizing'
+            description: Box sizing for the button; same values as the CSS box-sizing property.
+        example: |
+          <script src="https://applepay.cdn-apple.com/jsapi/1.latest/apple-pay-sdk.js"></script>
+          <apple-pay-button buttonstyle="black" type="buy" locale="el-GR"></apple-pay-button>
+      - name: Apple Pay payment sheet
+        type: hosted-surface
+        docs: https://developer.apple.com/documentation/applepayontheweb
+        description: >-
+          Browser-rendered payment sheet that collects payment, shipping and contact
+          details. Not embedded in the page DOM — Safari presents it, and the site
+          interacts with it through the Apple Pay JS API and the Payment Request API.
+          Field-level errors are surfaced back into the sheet with ApplePayError; see
+          errors/apple-safari-problem-types.yml.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

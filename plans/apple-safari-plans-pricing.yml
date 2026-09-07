@@ -1,174 +1,95 @@
+generated: '2026-09-07'
+method: searched
+source: https://developer.apple.com/programs/
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
 provider: Apple Safari
 providerId: apple-safari
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-07'
 tags:
   - Apple
   - Browser
-  - Privacy
-  - Web Browser
-  - Webkit
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Pricing
+  - Developer Program
+description: >-
+  Published pricing for access to the Safari developer surface. This file replaces a
+  2026-05-04 bulk-sweep scaffold that invented free/professional/enterprise API tiers
+  with per-request quotas and TBD overage pricing. Apple sells no metered API plan for
+  Safari. Safari itself is free, and every Safari web API — Web Extensions, WebKit, Web
+  Push, WebAuthn/passkeys, Payment Request, Web Inspector, the Safari MCP server — is
+  usable at no cost with no API key. The only money on this surface is the Apple
+  Developer Program membership, which gates App Store distribution and signing rather
+  than API calls.
+supersedes:
+  method: generated
+  note: >-
+    Prior revision was a fabricated scaffold from the 2026-05-04 bulk sweep (roadmap#35),
+    asserting three metered tiers Apple has never offered. Removed 2026-09-07.
+plan_count: 3
+metered_api_pricing: false
 plans:
-  - id: apple-safari-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Apple Safari API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Safari Extensions API
-      - name: Safari App Extensions API
-      - name: Safari Web Content API
-      - name: Safari Services API
-      - name: Safari Web Push API
-      - name: Safari Content Blocking API
-      - name: Safari Developer Tools API
-      - name: Safari Authentication Services API
-  - id: apple-safari-pro
-    name: Professional
+  - id: apple-safari-free-developer-account
+    name: Apple Developer account
+    type: free
+    price: '0.00'
+    currency: USD
+    billing_period: none
+    url: https://developer.apple.com/programs/
+    description: >-
+      Free Apple Developer account. Sufficient for essentially all Safari web
+      development: building and testing web extensions locally, Web Inspector,
+      safaridriver and the Safari MCP server, and Web Push.
+    includes:
+      - Access to beta versions of Xcode and operating systems
+      - Test apps directly on your own devices using Xcode
+      - Apple Developer Forums
+      - Bug reporting with Feedback Assistant
+      - Meet with Apple online events
+    limits: []
+    note: >-
+      Apple states explicitly for web push: "You don't need to join the Apple Developer
+      Program to send web push notifications."
+      (https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers)
+  - id: apple-developer-program
+    name: Apple Developer Program
     type: paid
-    description: Production tier for Apple Safari. Provides higher quotas, priority support, and access
-      to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://developer.apple.com
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Safari Extensions API
-      - name: Safari App Extensions API
-      - name: Safari Web Content API
-      - name: Safari Services API
-      - name: Safari Web Push API
-      - name: Safari Content Blocking API
-      - name: Safari Developer Tools API
-      - name: Safari Authentication Services API
-      - name: Apple Pay on the Web API
-  - id: apple-safari-enterprise
-    name: Enterprise
+    price: '99.00'
+    currency: USD
+    billing_period: year
+    url: https://developer.apple.com/programs/
+    description: >-
+      Annual membership. Required for the Safari surfaces that involve distribution or
+      signed identity — packaging and distributing Safari web extensions and Safari app
+      extensions through App Store Connect, and obtaining the Apple Pay merchant identity
+      certificate used for merchant validation.
+    includes:
+      - Everything in the free Apple Developer account
+      - TestFlight beta distribution
+      - Distribution of apps and digital goods on Apple platforms
+      - App analytics and sales reports
+      - App Store marketing tools
+      - Code-level technical support from Apple experts
+    limits: []
+  - id: apple-developer-enterprise-program
+    name: Apple Developer Enterprise Program
     type: enterprise
-    description: Custom-negotiated tier for Apple Safari. Includes dedicated capacity, contractual SLAs,
-      security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://developer.apple.com
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Safari Extensions API
-      - name: Safari App Extensions API
-      - name: Safari Web Content API
-      - name: Safari Services API
-      - name: Safari Web Push API
-      - name: Safari Content Blocking API
-      - name: Safari Developer Tools API
-      - name: Safari Authentication Services API
-      - name: Apple Pay on the Web API
+    price: '299.00'
+    currency: USD
+    billing_period: year
+    url: https://developer.apple.com/programs/enterprise/
+    description: >-
+      For organizations that need private, in-house distribution to their own employees
+      through MDM or internal systems rather than the App Store.
+    limits: []
+free_of_charge:
+  - Safari browser on macOS, iOS, iPadOS and visionOS
+  - Safari Technology Preview
+  - Safari MCP server (bundled with Safari 27 beta / Safari Technology Preview 247)
+  - safaridriver / W3C WebDriver automation
+  - Web Push via the Apple push service
+  - WebKit developer documentation and Web Inspector
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

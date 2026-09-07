@@ -32,7 +32,7 @@ tags:
   - Web Browser
   - Webkit
 created: '2024'
-modified: '2026-04-19'
+modified: '2026-09-07'
 url: https://www.apple.com/safari/
 apis:
   - name: Safari Extensions API
@@ -147,7 +147,7 @@ apis:
       iPadOS using the Push API, Notifications API, and Service Workers.
     image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
-    baseURL: https://developer.apple.com
+    baseURL: https://web.push.apple.com
     tags:
       - Notification
       - Push Api
@@ -260,7 +260,7 @@ apis:
       the Apple Pay JS API and the Payment Request API.
     image: https://developer.apple.com/assets/elements/icons/safari/safari-96x96_2x.png
     humanURL: https://developer.apple.com/documentation/applepayontheweb
-    baseURL: https://developer.apple.com
+    baseURL: https://apple-pay-gateway.apple.com
     tags:
       - Apple Pay
       - JavaScript
@@ -292,6 +292,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: Website
+    url: https://www.apple.com/
   - type: VulnerabilityDisclosure
     url: security/apple-safari-vulnerability-disclosure.yml
   - type: DomainSecurity
@@ -316,3 +318,64 @@ common:
     url: https://developer.apple.com/safari/
   - type: Integrations
     url: https://developer.apple.com/safari/extensions/
+  - type: MCPServer
+    url: mcp/apple-safari-mcp.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: WellKnown
+    url: well-known/apple-safari-well-known.yml
+  - type: SecurityTxt
+    url: well-known/apple-safari-security.txt
+  - type: Security
+    url: security/apple-safari-vulnerability-disclosure.yml
+  - type: TrustCenter
+    url: security/apple-safari-trust-center.yml
+  - type: Compliance
+    url: security/apple-safari-trust-center.yml
+  - type: Conformance
+    url: conformance/apple-safari-conformance.yml
+  - type: Packages
+    url: packages/apple-safari-packages.yml
+  - type: SDKs
+    url: packages/apple-safari-packages.yml
+  - type: CLI
+    url: cli/apple-safari-cli.yml
+  - type: Components
+    url: components/apple-safari-components.yml
+  - type: Authentication
+    url: authentication/apple-safari-authentication.yml
+  - type: ErrorCatalog
+    url: errors/apple-safari-problem-types.yml
+  - type: Conventions
+    url: conventions/apple-safari-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/apple-safari-lifecycle.yml
+  - type: StatusPage
+    url: https://developer.apple.com/system-status/
+  - type: ChangeLog
+    url: changelog/apple-safari-changelog.yml
+  - type: Sandbox
+    url: sandbox/apple-safari-sandbox.yml
+  - type: Plans
+    url: plans/apple-safari-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/apple-safari-rate-limits.yml
+  - type: LLMsTxt
+    url: llms/apple-safari-llms.txt
+  - type: APIReference
+    url: https://developer.apple.com/documentation/safariservices
+  - type: GitHubOrganization
+    url: https://github.com/WebKit
+  - type: Pricing
+    url: https://developer.apple.com/programs/
+  - type: SignUp
+    url: https://developer.apple.com/account/
+  - type: TermsOfService
+    url: https://developer.apple.com/support/terms/apple-developer-agreement/
+  - type: PrivacyPolicy
+    url: https://www.apple.com/legal/privacy/
+x-enrichment:
+  date: '2026-09-07'
+  status: enriched
+  artifacts_added: 19
+  pass: local-v3

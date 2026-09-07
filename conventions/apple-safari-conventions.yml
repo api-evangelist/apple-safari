@@ -1,0 +1,126 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers,
+  https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session,
+  https://developer.apple.com/documentation/applepayontheweb/setting-up-your-server,
+  https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+specification: API Commons Conventions
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Cross-cutting runtime semantics for the Safari developer surface. Important framing:
+  seven of the nine APIs in this record are in-process platform APIs (Web Extensions,
+  WebKit/WKWebView, SafariServices, Authentication Services, Content Blocking, Developer
+  Tools) with no network endpoint at all — they have no auth header, no pagination, no
+  rate-limit header and no idempotency key because they are not HTTP APIs. Only three
+  surfaces are callable over a network or a socket: the Apple Web Push service, the
+  Apple Pay merchant-validation gateway, and the local safaridriver WebDriver/MCP
+  server.
+surfaces:
+  - name: Apple Web Push service
+    kind: hosted HTTP
+    host: 'https://*.push.apple.com'
+    transport: HTTP/1.1 (default) or HTTP/2, negotiated with ALPN
+  - name: Apple Pay merchant validation
+    kind: hosted HTTP
+    host: https://apple-pay-gateway.apple.com (global) / https://cn-apple-pay-gateway.apple.com (China region)
+    transport: HTTPS over TCP 443, mutual TLS, SNI required
+  - name: safaridriver
+    kind: local HTTP + local stdio
+    host: localhost
+    transport: W3C WebDriver REST over a local web server; MCP over stdio with --mcp
+authentication:
+  style: per-surface; there is no single Safari API credential
+  detail: >-
+    Web Push authenticates with a VAPID JWT plus the matching VAPID public key in the
+    Authorization header. Apple Pay merchant validation authenticates with a merchant
+    identity client certificate over mutual TLS — not a bearer token or API key. The
+    local safaridriver surface has no authentication; access is gated by the user
+    enabling "Allow remote automation and external agents" on their own machine.
+  see: authentication/apple-safari-authentication.yml
+idempotency:
+  coverage: none
+  scope: []
+  header: null
+  detail: >-
+    No replay-protection mechanism is published on any Safari surface. Apple documents
+    no Idempotency-Key header. The Apple Pay payment-session call is explicitly the
+    opposite of idempotent — "Use a new Apple Pay payment session for each transaction",
+    and the returned session expires after five minutes. The Web Push service offers
+    coalescing via the Topic header, which is a de-duplication of DELIVERY, not of
+    submission: two identical POSTs are two accepted requests that may collapse into one
+    displayed notification. An agent retrying a push send has no key with which to make
+    that retry safe.
+  evidence:
+    - https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+    - https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+reversibility:
+  grade: na
+  detail: >-
+    No Safari API exposes a reversal operation, and none is needed. The Web Push service
+    is fire-and-forget delivery — once a notification is accepted there is no documented
+    cancel, recall or revoke; the only lever is the TTL you set before sending, after
+    which the push service drops an undelivered message (it may store it for 30 days or
+    fewer depending on the TTL value). Apple Pay merchant validation mints a short-lived
+    session object and moves no money: capture, refund and void all happen at the payment
+    processor, outside Apple's web API surface, so there is no Apple operation to reverse.
+    The remaining surfaces are read-only or in-process. Recorded as `na` rather than a
+    failure: there is no write whose consequences an agent would need to undo.
+  reversals: []
+  evidence:
+    - https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    - https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+dry_run_mode:
+  supported: true
+  detail: >-
+    Not a per-request dry-run flag, but a full parallel sandbox: Apple Pay publishes a
+    separate certification gateway (apple-pay-gateway-cert.apple.com) with its own IP
+    allow list, explicitly for development and sandbox testing only. safaridriver runs
+    every automation session in an isolated automation window that starts from a clean
+    slate and cannot reach real browsing data. See sandbox/apple-safari-sandbox.yml.
+pagination:
+  style: none
+  detail: No Safari surface returns paginated collections.
+request_tracing:
+  supported: true
+  field: apns-id
+  detail: >-
+    Every Apple Web Push response carries an `apns-id` response header that uniquely
+    identifies the push request. This is the only correlation identifier published across
+    the Safari surface.
+versioning:
+  style: product version
+  detail: >-
+    Safari APIs version with the browser, not with a URL path or a version header. Apple
+    ships per-release documentation (Safari 26.0 through Safari 26.6, Safari 27 Beta) and
+    a separate Safari Technology Preview train. Apple Pay JS additionally has its own
+    integer API version — ApplePayError and the phoneticName contact field require Apple
+    Pay API version 3 or later.
+  see: changelog/apple-safari-changelog.yml
+error_envelope:
+  style: vendor JSON with a `reason` code (Web Push); typed error object with a `code`
+    enum and `contactField` locator (Apple Pay JS)
+  rfc9457: false
+  see: errors/apple-safari-problem-types.yml
+rate_limit_signaling:
+  headers_published: false
+  detail: >-
+    Apple publishes no X-RateLimit-*/RateLimit-* headers and no Retry-After guidance for
+    the Safari surface. Throttling is signalled only by HTTP 429 with reason
+    TooManyRequests, and by protocol-level flow control (HTTP/2
+    SETTINGS_MAX_CONCURRENT_STREAMS; at most 100 unacknowledged pipelined requests on
+    HTTP/1.1). An agent must read the status code, not a header budget.
+  see: rate-limits/apple-safari-rate-limits.yml
+payload_limits:
+  - surface: Apple Web Push
+    limit: 4 KB encrypted payload
+    enforcement: HTTP 413 with reason PayloadTooLarge
+  - surface: Apple Pay payment session
+    limit: displayName is 64 or fewer UTF-8 characters
+    enforcement: documented request constraint
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

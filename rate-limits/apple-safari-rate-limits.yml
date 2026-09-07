@@ -1,132 +1,122 @@
+generated: '2026-09-07'
+method: searched
+source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
 specification: API Commons Rate Limits
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
 provider: Apple Safari
 providerId: apple-safari
 created: '2026-05-04'
-# Provenance stamped 2026-08-11: this artifact was written by the API Evangelist
-# bulk sweep dated 2026-05-04, not harvested from the provider. See roadmap#35.
-method: generated
-modified: '2026-05-04'
+modified: '2026-09-07'
 tags:
   - Apple
   - Browser
-  - Privacy
-  - Web Browser
-  - Webkit
+  - Web Push
   - Rate Limiting
-  - Quotas
   - Throttling
-description: Machine-readable rate limit definitions for the Apple Safari API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Published throttling and flow-control limits for the Safari developer surface. This
+  file replaces a 2026-05-04 bulk-sweep scaffold that asserted free/professional/
+  enterprise tiers with 10/100/1000 requests-per-minute quotas — Apple publishes no such
+  tiers and never did. What Apple actually publishes is protocol-level flow control and
+  an overload status code on the Web Push service; there are no numeric per-key request
+  quotas and no rate-limit response headers anywhere on this surface.
+supersedes:
+  method: generated
+  note: >-
+    Prior revision was a fabricated scaffold from the 2026-05-04 bulk sweep (roadmap#35).
+    Every tier, quota and header in it was invented. Removed 2026-09-07.
+limit_count: 4
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+  published: false
+  note: >-
+    Apple documents no X-RateLimit-*, RateLimit-* or Retry-After headers for any Safari
+    surface. The only per-request identifier returned is apns-id, which is a correlation
+    id, not a budget signal.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
+  throttledReason: TooManyRequests
+  payloadTooLarge: 413
   serviceUnavailable: 503
+  shuttingDown: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Safari Extensions API
-      - Safari App Extensions API
-      - Safari Web Content API
-      - Safari Services API
-      - Safari Web Push API
-      - Safari Content Blocking API
-      - Safari Developer Tools API
-      - Safari Authentication Services API
-      - Apple Pay on the Web API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Safari Extensions API
-      - Safari App Extensions API
-      - Safari Web Content API
-      - Safari Services API
-      - Safari Web Push API
-      - Safari Content Blocking API
-      - Safari Developer Tools API
-      - Safari Authentication Services API
-      - Apple Pay on the Web API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: HTTP/1.1 unacknowledged push requests
+    surface: Apple Web Push service
+    scope: per-connection
+    metric: unacknowledged_requests
     limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Safari Extensions API
-      - Safari App Extensions API
-      - Safari Web Content API
-      - Safari Services API
-      - Safari Web Push API
-      - Safari Content Blocking API
-      - Safari Developer Tools API
-      - Safari Authentication Services API
-      - Apple Pay on the Web API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Safari Extensions API
-      - Safari App Extensions API
-      - Safari Web Content API
-      - Safari Services API
-      - Safari Web Push API
-      - Safari Content Blocking API
-      - Safari Developer Tools API
-      - Safari Authentication Services API
-      - Apple Pay on the Web API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Safari Extensions API
-      - Safari App Extensions API
-      - Safari Web Content API
-      - Safari Services API
-      - Safari Web Push API
-      - Safari Content Blocking API
-      - Safari Developer Tools API
-      - Safari Authentication Services API
-      - Apple Pay on the Web API
+    window: concurrent
+    detail: >-
+      "The push notification service supports HTTP pipelining for HTTP/1.1. Don't send
+      more than 100 unacknowledged push requests over the connection."
+    source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - name: HTTP/2 concurrent streams
+    surface: Apple Web Push service
+    scope: per-connection
+    metric: concurrent_streams
+    limit: null
+    window: concurrent
+    detail: >-
+      "There's a limit of concurrent streams for HTTP/2. Don't make assumptions about the
+      number of concurrent streams allowed; instead, don't exceed the
+      SETTINGS_MAX_CONCURRENT_STREAMS value in the HTTP/2 SETTINGS frame." The number is
+      server-advertised at runtime and is deliberately not published as a constant.
+    source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - name: Consecutive requests to one device token
+    surface: Apple Web Push service
+    scope: per-subscription
+    metric: consecutive_requests
+    limit: null
+    window: unspecified
+    detail: >-
+      "The push service received too many consecutive requests to the same device token"
+      is returned as HTTP 429 with reason TooManyRequests. Apple states the condition but
+      publishes no threshold and no reset window.
+    source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - name: VAPID JWT refresh
+    surface: Apple Web Push service
+    scope: per-application-server
+    metric: jwt_refresh
+    limit: 1
+    window: hour
+    detail: '"Don''t refresh your JWT more frequently than once per hour."'
+    source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - name: Encrypted payload size
+    surface: Apple Web Push service
+    scope: per-request
+    metric: payload_bytes
+    limit: 4096
+    window: per-request
+    detail: 'Over the limit returns HTTP 413 with reason PayloadTooLarge: "The payload size is over the limit of 4 KB."'
+    source: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - name: Concurrent WebDriver sessions
+    surface: safaridriver
+    scope: per-machine
+    metric: sessions
+    limit: 1
+    window: concurrent
+    detail: >-
+      "Only one Safari browser instance can be active at any given time, and only one
+      WebDriver session at a time can be attached to the browser instance."
+    source: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+not_rate_limited:
+  - surface: Safari Extensions, Safari App Extensions, WebKit, SafariServices, Content Blocking, Developer Tools, Authentication Services
+    reason: In-process platform APIs with no network endpoint; no request quota applies.
+  - surface: Apple Pay merchant validation
+    reason: >-
+      Apple publishes no request rate limit for
+      apple-pay-gateway.apple.com/paymentservices/paymentSession. The natural constraint
+      is one session per transaction, expiring after five minutes.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Backoff on 429/500/503
+    description: >-
+      HTTP 429 (TooManyRequests), 500 (InternalServerError) and 503 (ServiceUnavailable /
+      Shutdown) are the documented retryable conditions. No Retry-After header is sent,
+      so a client must choose its own backoff.
+  - name: Persistent connections
+    description: >-
+      "Your service should maintain TLS encrypted connections to APNs." Reconnect
+      churn, not request volume, is the main documented failure mode.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

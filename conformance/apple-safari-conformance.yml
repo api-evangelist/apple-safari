@@ -1,0 +1,144 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  Apple developer documentation and webkit.org — each entry's evidence field names the
+  exact page the claim was read from.
+specification: API Commons Conformance
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+description: >-
+  Standards conformance for the Safari developer surface. Safari's domain standard is
+  the open web platform itself: nearly every API in this record is an implementation of
+  a W3C, WHATWG or IETF specification rather than a bespoke vendor contract, which is
+  the strongest possible position for an integrator — a developer who already speaks the
+  standard needs no Safari-specific connector. Entries are recorded only where Apple's
+  own documentation names the standard.
+domain_standard:
+  market: web browsers and the open web platform
+  standard: W3C / WHATWG web platform specifications
+  conforms: true
+  evidence: >-
+    https://developer.apple.com/documentation/safari-release-notes — "It's built on
+    WebKit, a fast, open-source web rendering engine that implements web standards."
+    WebKit publishes per-specification positions at
+    https://webkit.org/standards-positions/.
+  note: >-
+    Reward-only signal. Safari's implementation of the standards below is what an
+    integrator actually binds to; there is no proprietary Safari protocol to learn for
+    Web Push, WebAuthn, Payment Request, WebDriver or Web Extensions.
+conformance:
+  - id: rfc8030
+    name: RFC 8030 — Generic Event Delivery Using HTTP Push (Web Push)
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: >-
+      Apple instructs servers to "package and send a push notification to a push service
+      according to the RFC 8030" and links datatracker RFC 8030 directly.
+  - id: vapid
+    name: VAPID — Voluntary Application Server Identification for Web Push
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: >-
+      Apple requires a VAPID key pair and a VAPID JWT in the Authorization header, and
+      links draft-ietf-webpush-vapid.
+  - id: w3c-push-api
+    name: W3C Push API
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: Apple links https://www.w3.org/TR/push-api/ as the standard web push implements.
+  - id: w3c-notifications-api
+    name: W3C Notifications API
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - id: w3c-badging-api
+    name: W3C Badging API
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: navigator.setAppBadge / navigator.clearAppBadge are documented for Home Screen web apps.
+  - id: service-workers
+    name: W3C Service Workers
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  - id: w3c-webdriver
+    name: W3C WebDriver
+    conforms: true
+    evidence: https://developer.apple.com/documentation/webkit/about-webdriver-for-safari
+    detail: >-
+      "Safari's driver is called safaridriver and has a preset available in most Selenium
+      client libraries… any other language whose library is compatible with the W3C
+      WebDriver protocol." WebDriver is a REST API hosted on a local web server.
+  - id: w3c-webauthn
+    name: W3C Web Authentication (WebAuthn) / passkeys
+    conforms: true
+    evidence: https://developer.apple.com/documentation/authenticationservices/authenticating-people-by-using-passkeys-in-browser-apps
+  - id: w3c-payment-request
+    name: W3C Payment Request API
+    conforms: true
+    evidence: https://developer.apple.com/documentation/applepayontheweb
+    detail: Apple Pay on the Web is offered through both the Apple Pay JS API and the W3C Payment Request API.
+  - id: webextensions
+    name: WebExtensions (cross-browser extension model)
+    conforms: true
+    evidence: https://developer.apple.com/documentation/safariservices/converting-a-web-extension-for-safari
+    detail: >-
+      Apple ships safari-web-extension-converter specifically to take an existing
+      Chrome/Firefox web extension into Safari, and documents browser-compatibility
+      assessment for web extensions.
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+    detail: '"Any MCP-compatible client can connect to the Safari MCP server."'
+  - id: rfc3546-sni
+    name: TLS Server Name Indication
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: Required on all connections to the Apple Web Push service and to Apple Pay gateways.
+  - id: rfc7301-alpn
+    name: TLS Application-Layer Protocol Negotiation
+    conforms: true
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: Used to negotiate between HTTP/1.1 (default) and HTTP/2 against APNs.
+  - id: mtls
+    name: Mutual TLS client-certificate authentication
+    conforms: true
+    evidence: https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+    detail: >-
+      "Your server posts a request using mutual TLS (mTLS)" with the merchant identity
+      certificate associated with the merchant ID. TLS 1.2 or later required, from a
+      fixed cipher-suite allow list.
+  - id: rfc9116
+    name: RFC 9116 — security.txt
+    conforms: true
+    evidence: https://apple.com/.well-known/security.txt
+    detail: 'Served at apple.com and www.apple.com with Contact, Policy, Acknowledgments and Expires fields. Probed 2026-09-07: HTTP 200 text/plain.'
+  - id: rfc9457
+    name: RFC 9457 — Problem Details for HTTP APIs
+    conforms: false
+    evidence: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    detail: >-
+      The push service returns a vendor JSON dictionary keyed on `reason`, not
+      application/problem+json.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: partial
+    evidence: https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession
+    detail: >-
+      ASWebAuthenticationSession is the OAuth-style browser handoff Safari provides to
+      apps; Safari itself is the user agent, not an OAuth authorization server. No
+      OAuth discovery document is served on any host in this record — see
+      well-known/apple-safari-well-known.yml.
+compliance:
+  published: true
+  source: https://support.apple.com/guide/certifications/welcome/web
+  detail: >-
+    Apple publishes a Platform Certifications guide covering hardware security
+    (Secure Enclave, T2), operating systems, and Apple internet services including
+    Apple Pay. Named programmes include Common Criteria certification, cryptographic
+    module validation (CMVP/FIPS), and SOC 3 audit reports for Private Cloud Compute.
+    See security/apple-safari-trust-center.yml.
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

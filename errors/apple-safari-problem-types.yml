@@ -1,0 +1,154 @@
+generated: '2026-09-07'
+method: searched
+source: >-
+  https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+  and https://developer.apple.com/documentation/applepayontheweb/applepayerrorcode
+specification: API Commons Error Catalog
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+format: vendor-json
+description: >-
+  Error semantics for the two Safari surfaces that are real HTTP or callback APIs with a
+  published error vocabulary: the Apple Web Push service, and the Apple Pay on the Web
+  payment sheet. Neither uses RFC 9457 problem+json. The push service returns a JSON
+  dictionary carrying a `reason` key; Apple Pay JS returns error objects built from a
+  fixed ApplePayErrorCode enum plus an ApplePayErrorContactField. The remaining Safari
+  APIs (Web Extensions, WebKit, SafariServices, Authentication Services, Developer Tools)
+  are in-process platform APIs and raise platform exceptions rather than API errors, so
+  they carry no catalog here.
+catalogs:
+  - name: Apple Web Push service
+    surface: 'POST https://*.push.apple.com/<endpoint from PushManager.subscribe>'
+    envelope:
+      transport: HTTP status code
+      body: JSON dictionary
+      code_field: reason
+      correlation_header: apns-id
+      note: >-
+        Every push request gets a response. The response headers include the HTTP status
+        code and an `apns-id` that uniquely identifies the request.
+    docs: https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+    http_statuses:
+      - status: 201
+        meaning: Success.
+      - status: 400
+        meaning: Bad request.
+      - status: 403
+        meaning: There's an error with your authentication.
+      - status: 404
+        meaning: 'The request contains an invalid :path value.'
+      - status: 405
+        meaning: 'The request contains an invalid :method value. Only use POST requests.'
+      - status: 410
+        meaning: The device token has expired.
+      - status: 413
+        meaning: The notification payload is too large.
+      - status: 429
+        meaning: The server is receiving too many requests for the same destination.
+      - status: 500
+        meaning: Internal server error.
+      - status: 503
+        meaning: The server is shutting down and is unavailable.
+    reason_codes:
+      - code: BadTtl
+        meaning: The TTL header is either missing or isn't a positive number.
+        remediation: Send a TTL header with a positive integer number of seconds.
+      - code: BadUrgency
+        meaning: 'The Urgency header is present but isn''t one of the allowed values: very-low, low, normal, high.'
+        remediation: Send one of the four documented Urgency values, or omit the header.
+      - code: BadWebPushRequest
+        meaning: The request doesn't conform to the encryption rules.
+        remediation: Re-encrypt the payload according to the Web Push encryption rules and set Content-Encoding to the method used.
+      - code: BadWebPushTopic
+        meaning: The Topic header is present but doesn't conform to the specification.
+        remediation: Use at most 32 characters from the URL/filename-safe Base64 character sets.
+      - code: VapidPkHashMismatch
+        meaning: The VAPID public key from the push subscription doesn't match the VAPID public key in the request.
+        remediation: Send the same public key that was passed to PushManager.subscribe for this subscription.
+      - code: IdleTimeout
+        meaning: The connection timed out.
+        remediation: Reconnect and resend. Maintain persistent TLS connections to APNs.
+      - code: BadAuthorizationHeader
+        meaning: The Authorization header doesn't conform to the specification.
+        remediation: Send the VAPID JWT and public key in the documented Authorization header form.
+      - code: BadJwtToken
+        meaning: 'The JWT is missing, signed with the wrong private key, has a subject claim that isn''t a URL or mailto:, has an audience claim that isn''t the origin of the push service the request went to, or has an expiration more than one day in the future.'
+        remediation: Re-mint the VAPID JWT with the correct signing key, subject, audience and expiry. Do not refresh more than once per hour.
+      - code: BadVapidPublicKey
+        meaning: 'The VAPID public key isn''t present, isn''t base64url encoded, or isn''t the correct type of key.'
+        remediation: Send a base64url-encoded VAPID public key of the correct type.
+      - code: BadPath
+        meaning: 'The request contained an invalid :path value.'
+        remediation: Post to the exact endpoint URL returned by PushManager.subscribe.
+      - code: MethodNotAllowed
+        meaning: 'The specified :method value isn''t POST.'
+        remediation: Use POST.
+      - code: PayloadTooLarge
+        meaning: The payload size is over the limit of 4 KB.
+        remediation: Reduce the encrypted payload to 4 KB or less.
+      - code: TooManyRequests
+        meaning: The push service received too many consecutive requests to the same device token.
+        remediation: Back off before sending again to that subscription. See rate-limits/apple-safari-rate-limits.yml.
+      - code: InternalServerError
+        meaning: An internal server error occurred.
+        remediation: Retry with backoff.
+      - code: ServiceUnavailable
+        meaning: The service is unavailable.
+        remediation: Retry with backoff.
+      - code: Shutdown
+        meaning: The push server is shutting down.
+        remediation: Reconnect to the push service and resend.
+  - name: Apple Pay on the Web — ApplePayError
+    surface: Apple Pay JS API payment sheet (client-side callback)
+    envelope:
+      code_field: code
+      locator_field: contactField
+      message_field: message
+      note: >-
+        You construct an ApplePayError and return it from a completion method; Apple Pay
+        highlights the named field on the payment sheet and shows your message. Users
+        must resolve every reported error before they can finalize the transaction.
+        ApplePayError requires Apple Pay API version 3 or later and is only supported in
+        the Apple Pay JS API, not the Payment Request API.
+    docs: https://developer.apple.com/documentation/applepayontheweb/applepayerrorcode
+    example: 'new ApplePayError("shippingContactInvalid", "postalCode", "ZIP Code is invalid")'
+    codes:
+      - code: shippingContactInvalid
+        meaning: The shipping address or contact information is invalid or missing.
+        requires_contact_field: true
+      - code: billingContactInvalid
+        meaning: The billing address information is invalid or missing.
+        requires_contact_field: true
+      - code: addressUnserviceable
+        meaning: The merchant can't provide service to the shipping address (for example, can't deliver to a P.O. Box).
+        requires_contact_field: false
+      - code: couponCodeInvalid
+        meaning: Invalid coupon.
+        requires_contact_field: false
+      - code: couponCodeExpired
+        meaning: Expired coupon.
+        requires_contact_field: false
+      - code: unknown
+        meaning: An unknown but nonfatal error occurred during payment processing. The user can attempt authorization again.
+        requires_contact_field: false
+    contact_fields:
+      - phoneNumber
+      - emailAddress
+      - name
+      - phoneticName
+      - postalAddress
+      - addressLines
+      - locality
+      - subLocality
+      - postalCode
+      - administrativeArea
+      - subAdministrativeArea
+      - country
+      - countryCode
+    contact_field_note: 'phoneticName is available starting in Apple Pay API version 3.'
+rfc9457: false
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com

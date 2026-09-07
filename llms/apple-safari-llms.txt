@@ -1,0 +1,121 @@
+# Apple Safari
+
+> Apple's web browser for macOS, iOS, iPadOS and visionOS, built on the open-source
+> WebKit engine. Its "API surface" is the open web platform as Safari implements it,
+> plus a small set of Apple-specific developer surfaces. Nine APIs are catalogued here;
+> only three of them are callable over a network or a socket.
+
+Generated 2026-09-07 by API Evangelist from this repository's artifacts. Apple publishes
+no llms.txt of its own — probed https://developer.apple.com/llms.txt (404),
+https://webkit.org/llms.txt (404), https://docs.webkit.org/llms.txt (404),
+https://www.apple.com/llms.txt (404).
+
+## What an agent can actually call
+
+- Safari MCP server — LOCAL STDIO, not a hosted endpoint. `safaridriver --mcp`, shipped
+  inside Safari 27 beta and Safari Technology Preview 247. 17 tools: navigate, read the
+  DOM, evaluate JavaScript, screenshot, inspect network requests, read console output,
+  manage tabs, set viewport and emulated media. No auth; the user enables it on their own
+  machine. https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+- Apple Web Push service — `https://*.push.apple.com`. RFC 8030 + VAPID. POST only.
+  4 KB encrypted payload limit, `apns-id` correlation header, 16 documented `reason`
+  codes. https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers
+- Apple Pay merchant validation — `POST https://apple-pay-gateway.apple.com/paymentservices/paymentSession`
+  (China region: `cn-apple-pay-gateway.apple.com`). Mutual TLS with a merchant identity
+  certificate, server-side only, session expires after five minutes.
+  https://developer.apple.com/documentation/applepayontheweb/requesting-an-apple-pay-payment-session
+
+Everything else in this record — Safari Extensions, Safari App Extensions, WebKit /
+WKWebView, SafariServices, Content Blocking, Developer Tools, Authentication Services —
+is an in-process platform API. There is no host, no key, no rate limit and no idempotency
+key, because there is no request.
+
+## No OpenAPI
+
+Apple publishes no OpenAPI, Swagger, GraphQL or AsyncAPI description for Safari.
+Probed 2026-09-07: /openapi.json, /openapi.yaml, /swagger.json, /api-docs, /docs and
+/graphql on developer.apple.com, webkit.org and docs.webkit.org — all 404.
+
+Apple's documentation IS machine-readable, just not as a contract: developer.apple.com
+serves DocC render JSON at
+`https://developer.apple.com/tutorials/data/documentation/<path>.json`, which is how the
+facts in this repository were read. The human pages are a JavaScript shell.
+
+## APIs
+
+- [Safari Extensions API](https://developer.apple.com/documentation/safariservices/safari_web_extensions): Build Safari Web Extensions. Cross-browser WebExtensions model; `xcrun safari-web-extension-converter` ports a Chrome/Firefox extension.
+- [Safari App Extensions API](https://developer.apple.com/documentation/safariservices/safari_app_extensions): macOS app extensions that add features to Safari.
+- [Safari Web Content API](https://developer.apple.com/documentation/webkit): WKWebView, WKWebViewConfiguration, WKWebsiteDataStore — embedding and controlling web content.
+- [Safari Services API](https://developer.apple.com/documentation/safariservices): SFSafariViewController and related iOS/macOS integration.
+- [Safari Web Push API](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers): Push API, Notifications API, Badging API and Service Workers. Standards-based; no Apple Developer Program membership required.
+- [Safari Content Blocking API](https://developer.apple.com/documentation/safariservices/creating-a-content-blocker): Declarative content blocking rules for extensions.
+- [Safari Developer Tools API](https://developer.apple.com/documentation/safari-developer-tools): Web Inspector, plus adding a custom web development tool to it.
+- [Safari Authentication Services API](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession): ASWebAuthenticationSession, passkeys and WebAuthn in the browser.
+- [Apple Pay on the Web API](https://developer.apple.com/documentation/applepayontheweb): Apple Pay JS API and the W3C Payment Request API, plus the `<apple-pay-button>` custom element.
+
+## Standards implemented
+
+RFC 8030 (Web Push), VAPID, W3C Push API, Notifications API, Badging API, Service
+Workers, W3C WebDriver, W3C WebAuthn / passkeys, W3C Payment Request, WebExtensions,
+Model Context Protocol, TLS SNI (RFC 3546), ALPN (RFC 7301), mutual TLS, RFC 9116
+security.txt. Safari does NOT use RFC 9457 problem+json.
+See conformance/apple-safari-conformance.yml.
+
+## Runtime semantics an agent needs
+
+- **Idempotency: none.** No Idempotency-Key on any surface. Apple Pay explicitly requires
+  a NEW payment session per transaction. Web Push `Topic` coalesces display, not
+  submission — a retried POST is a second accepted request.
+- **Reversibility: not applicable.** No Safari API has a cancel, refund, void or undo.
+  Push is fire-and-forget bounded only by `TTL`; Apple Pay session minting moves no money.
+- **Rate limits: no headers.** No X-RateLimit-*, no RateLimit-*, no Retry-After. Overload
+  is signalled by HTTP 429 with reason `TooManyRequests`, plus HTTP/2
+  SETTINGS_MAX_CONCURRENT_STREAMS and a 100-unacknowledged cap on HTTP/1.1 pipelining.
+- **Tracing:** `apns-id` on every Web Push response. Nothing else.
+- **Versioning:** by browser release (Safari 26.6 stable, 27 Beta, STP 251), not by URL
+  path. Apple Pay JS has its own integer API version; ApplePayError needs version 3+.
+
+## Pricing
+
+Safari and every Safari web API are free. There is no metered API plan. A free Apple
+Developer account covers essentially all Safari web development. Apple Developer Program
+is $99/year and gates App Store Connect distribution and the Apple Pay merchant identity
+certificate; Apple Developer Enterprise Program is $299/year.
+https://developer.apple.com/programs/
+
+## Artifacts in this repository
+
+- mcp/apple-safari-mcp.yml — Safari MCP server, 17 tools, local-stdio deployment
+- skills/ — three Agent Skills grounded in real MCP tool names and real push semantics
+- errors/apple-safari-problem-types.yml — 10 push HTTP statuses, 16 push reason codes, 6 Apple Pay error codes, 13 contact fields
+- conventions/apple-safari-conventions.yml — auth, idempotency, reversibility, tracing, versioning
+- authentication/apple-safari-authentication.yml — VAPID JWT, Apple Pay mTLS, local automation
+- rate-limits/apple-safari-rate-limits.yml — published flow control and throttling
+- plans/apple-safari-plans-pricing.yml — Apple Developer Program tiers
+- packages/apple-safari-packages.yml, cli/apple-safari-cli.yml, components/apple-safari-components.yml
+- conformance/apple-safari-conformance.yml, lifecycle/apple-safari-lifecycle.yml, changelog/apple-safari-changelog.yml
+- sandbox/apple-safari-sandbox.yml, security/, well-known/
+
+## Not published
+
+- No OpenAPI / AsyncAPI / GraphQL / Protobuf / WSDL.
+- No A2A agent card. Probed /.well-known/agent-card.json and /.well-known/agent.json on
+  apple.com, www.apple.com, developer.apple.com, webkit.org, docs.webkit.org and
+  security.apple.com — no host serves one.
+- No OpenID/OAuth discovery document, no /.well-known/api-catalog.
+- No deprecation policy and no Sunset/Deprecation headers.
+- No SLA. No Postman collection. No published roadmap — webkit.org/status/ returns 200
+  but its body says the Feature Status page has been retired.
+
+## Links
+
+- Developer portal: https://developer.apple.com/safari/
+- Documentation: https://docs.webkit.org/
+- Release notes: https://developer.apple.com/documentation/safari-release-notes
+- Blog: https://webkit.org/blog/
+- Standards positions: https://webkit.org/standards-positions/
+- System status: https://developer.apple.com/system-status/
+- Forums: https://developer.apple.com/forums/
+- GitHub: https://github.com/WebKit
+- Security: https://apple.com/.well-known/security.txt · https://security.apple.com/bounty/guidelines/
+- Certifications: https://support.apple.com/guide/certifications/welcome/web

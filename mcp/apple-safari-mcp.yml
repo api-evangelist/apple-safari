@@ -1,0 +1,132 @@
+generated: '2026-09-07'
+method: searched
+source: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+specification: API Commons MCP Server
+specificationVersion: '0.1'
+provider: Apple Safari
+providerId: apple-safari
+name: Safari MCP server
+description: >-
+  Apple's first-party Model Context Protocol server for web developers, introduced by
+  WebKit in Safari 27 beta and Safari Technology Preview 247. It connects an
+  MCP-compatible agent to a live Safari browser window so the agent can navigate, read
+  the DOM, evaluate JavaScript, capture screenshots, inspect network requests and read
+  console output. It is shipped inside Safari itself: the server is started by running
+  the bundled `safaridriver` binary with the `--mcp` flag, so there is no hosted
+  endpoint and no package to install from a registry.
+status: published
+ownership:
+  note: >-
+    First-party. Announced on webkit.org, the WebKit Open Source Project site Apple
+    maintains for Safari's engine, and implemented in the `safaridriver` binary that
+    ships inside Safari and Safari Technology Preview. Unrelated third-party projects
+    also publish an MCP server named "safari-mcp"; none of those are recorded here.
+  evidence: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+deployment:
+  mode: local-stdio
+  install: claude mcp add safari-mcp -- "/usr/bin/safaridriver" --mcp
+  package: bundled with Safari 27 beta and Safari Technology Preview 247 — no registry package
+  auth: none
+  verified: searched
+  note: >-
+    No remote endpoint exists. The server runs on the developer's own machine over
+    stdio against a locally installed Safari, and the WebKit post publishes no HTTPS
+    URL an MCP client could POST to.
+requirements:
+  - Safari 27 beta, or Safari Technology Preview 247 or later
+  - 'Safari > Settings > Advanced > Show features for web developers'
+  - 'Safari > Settings > Developer > Allow remote automation and external agents'
+install_commands:
+  - client: Claude Code
+    target: Safari 27 beta
+    command: claude mcp add safari-mcp -- "/usr/bin/safaridriver" --mcp
+  - client: Claude Code
+    target: Safari Technology Preview
+    command: claude mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
+  - client: Codex
+    target: Safari 27 beta
+    command: codex mcp add safari-mcp -- "/usr/bin/safaridriver" --mcp
+  - client: Codex
+    target: Safari Technology Preview
+    command: codex mcp add safari-mcp-stp -- "/Applications/Safari Technology Preview.app/Contents/MacOS/safaridriver" --mcp
+config_example:
+  file: mcp.json
+  content: |
+    {
+      "mcpServers": {
+        "safari-mcp": {
+          "command": "/usr/bin/safaridriver",
+          "args": ["--mcp"]
+        }
+      }
+    }
+tool_count: 17
+tools:
+  - name: browser_console_messages
+    description: Return buffered console logs for the current or specified tab
+    category: diagnostics
+  - name: browser_dialogs
+    description: List and respond to browser dialogs (accept, dismiss, or input text for JS prompts)
+    category: interaction
+  - name: close_tab
+    description: Close a browser tab by its handle
+    category: tabs
+  - name: create_tab
+    description: Create a new browser tab, optionally loading a URL
+    category: tabs
+  - name: evaluate_javascript
+    description: Execute JavaScript code within the page and return the result
+    category: scripting
+  - name: get_network_request
+    description: Get full detail for a single recorded network request (headers, body, timing)
+    category: network
+  - name: get_page_content
+    description: Extract text content of a page in various formats (markdown, HTML, JSON, etc.)
+    category: content
+  - name: list_network_requests
+    description: List network request summaries (URL, method, status, timing) for the current tab
+    category: network
+  - name: list_tabs
+    description: List all open browser tabs with their handles and URLs
+    category: tabs
+  - name: navigate_to_url
+    description: Navigate to a URL and return the loaded page's content
+    category: navigation
+  - name: page_info
+    description: 'Get info about the current page: URL, title, and loading state'
+    category: content
+  - name: page_interactions
+    description: 'Perform DOM interactions in sequence: click, type, scroll, hover, keyPress, etc.'
+    category: interaction
+  - name: screenshot
+    description: Capture a screenshot of the current page as a PNG
+    category: content
+  - name: set_emulated_media
+    description: Emulate a CSS media type (e.g. "print") for responsive-design testing
+    category: environment
+  - name: set_viewport_size
+    description: Set the browser viewport size in CSS pixels
+    category: environment
+  - name: switch_tab
+    description: Switch to a different browser tab by its handle
+    category: tabs
+  - name: wait_for_navigation
+    description: Wait for the current page to finish loading; returns final URL and title
+    category: navigation
+tool_schemas:
+  available: false
+  note: >-
+    Tool names and descriptions are transcribed verbatim from the WebKit announcement's
+    tool table. Full inputSchema for each tool was not captured: the server is
+    stdio-only and reachable only from a machine with Safari 27 beta or Safari
+    Technology Preview installed, so `tools/list` could not be called from this
+    pipeline. Introspecting a local install would yield the real schemas.
+x-evidence:
+  fetched: '2026-09-07'
+  url: https://webkit.org/blog/18136/introducing-the-safari-mcp-server-for-web-developers/
+  http_status: 200
+  content_type: text/html
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+    url: https://apievangelist.com
