@@ -43,6 +43,10 @@ apis:
     humanURL: https://developer.apple.com/documentation/safariservices/safari_web_extensions
     baseURL: https://developer.apple.com
     tags:
+      - Browser Extension
+      - Extensions
+      - Web Extensions
+    tags_raw:
       - Browser Extensions
       - Extensions
       - Web Extensions
