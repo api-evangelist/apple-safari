@@ -296,6 +296,8 @@ maintainers:
     email: kin@apievangelist.com
     url: https://apievangelist.com
 common:
+  - type: FinOps
+    url: finops/apple-safari-finops.yml
   - type: Website
     url: https://www.apple.com/
   - type: VulnerabilityDisclosure
