@@ -2,18 +2,18 @@
   "repo": "apple-safari",
   "feeds": [
     {
-      "source": "https://developer.apple.com/videos/play/wwdc2022/10098/",
-      "feed_url": "https://developer.apple.com/videos/play/wwdc2022/10098/",
+      "source": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/",
+      "feed_url": "https://webkit.org/blog/13878/web-push-for-web-apps-on-ios-and-ipados/feed/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "discovered"
     },
     {
-      "source": "https://developer.apple.com/safari/resources/",
-      "feed_url": "https://developer.apple.com/safari/resources/",
+      "source": "https://webkit.org/blog/",
+      "feed_url": "https://webkit.org/blog/feed/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "discovered"
     },
     {
       "source": "https://webkit.org/blog/feed/",
@@ -28,10 +28,24 @@
       "title": "",
       "saved": 0,
       "method": "feed"
+    },
+    {
+      "source": "https://developer.apple.com/videos/play/wwdc2022/10098/",
+      "feed_url": "https://developer.apple.com/videos/play/wwdc2022/10098/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    },
+    {
+      "source": "https://developer.apple.com/safari/resources/",
+      "feed_url": "https://developer.apple.com/safari/resources/",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "post_count": 33,
-  "fetched": "2026-10-03T12:30:02Z",
+  "post_count": 34,
+  "fetched": "2026-10-10T13:15:00Z",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
