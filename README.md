@@ -1,4 +1,4 @@
-# Apple Safari (apple-safari)
+# Apple Safari
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,157 +66,128 @@
 
 Apple's web browser available across macOS, iOS, and iPadOS, providing a fast, efficient, and private browsing experience with features like Intelligent Tracking Prevention, iCloud syncing, and web standards support.
 
-**URL:** [Visit APIs.json URL](https://www.apple.com/safari/)
+**Areas:** Apple · Browser · Privacy · Web Browser · Webkit
 
-## Tags:
+## Apple Safari on APIs.io
 
- - Apple, Browser, Privacy, Web Browser, Webkit
+Everything profiled for Apple Safari is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apple-safari/](https://apis.io/providers/apple-safari/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (9)
 
-- **Created:** 2024 
-- **Modified:** 2026-04-19 
+- [Safari Extensions API](https://apis.io/apis/apple-safari/safari-extensions-api/) — API for building Safari Web Extensions that extend and customize the browsing experience.
+- [Safari App Extensions API](https://apis.io/apis/apple-safari/safari-app-extensions-api/) — API for creating app extensions that add features and functionality to Safari on macOS.
+- [Safari Web Content API](https://apis.io/apis/apple-safari/safari-web-content-api/) — WebKit APIs for interacting with web content, including JavaScript evaluation and DOM manipulation.
+- [Safari Services API](https://apis.io/apis/apple-safari/safari-services-api/) — iOS and macOS API for integrating Safari functionality into apps, including Safari View Controller.
+- [Safari Web Push API](https://apis.io/apis/apple-safari/safari-web-push-api/) — API for sending push notifications to users through Safari on macOS, iOS, and iPadOS using the Push API, Notifications API, and Service Workers.
+- [Safari Content Blocking API](https://apis.io/apis/apple-safari/safari-content-blocking-api/) — API for creating content blockers and declarative content blocking rules in Safari web extensions to filter and block web content.
+- [Safari Developer Tools API](https://apis.io/apis/apple-safari/safari-developer-tools-api/) — APIs and tools for inspecting, debugging, and optimizing web content in Safari, including Web Inspector and the ability to add custom web development tools.
+- [Safari Authentication Services API](https://apis.io/apis/apple-safari/safari-authentication-services-api/) — API for authenticating users through web services in Safari using ASWebAuthenticationSession, supporting OAuth, passkeys, and WebAuthn standards.
+- [Apple Pay on the Web API](https://apis.io/apis/apple-safari/apple-pay-on-the-web-api/) — JavaScript APIs for implementing Apple Pay payments in Safari, supporting both the Apple Pay JS API and the Payment Request API.
 
-## APIs
+### Published properties
 
-### Safari Extensions API
-API for building Safari Web Extensions that extend and customize the browsing experience.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-**Human URL:** [https://developer.apple.com/documentation/safariservices/safari_web_extensions](https://developer.apple.com/documentation/safariservices/safari_web_extensions)
+#### MCP servers (1)
 
-#### Tags:
+Model Context Protocol servers that expose the API to agents.
 
- - Browser Extensions, Extensions, Web Extensions
+- [Safari MCP server](https://apis.io/servers/apple-safari/safari-mcp-server/)
 
-#### Properties
+#### Security (4)
 
-- [Documentation](https://developer.apple.com/documentation/safariservices/safari_web_extensions)
-- [GettingStarted](https://developer.apple.com/documentation/safariservices/safari_web_extensions/creating_a_safari_web_extension)
-- [Portal](https://developer.apple.com/safari/extensions/)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Safari App Extensions API
-API for creating app extensions that add features and functionality to Safari on macOS.
+- [Apple Safari Authentication](https://apis.io/security/apple-safari/apple-safari-authentication/)
+- [Apple Safari Domain Security](https://apis.io/security/apple-safari/apple-safari-domain-security/)
+- [Apple Safari Trust Center](https://apis.io/security/apple-safari/apple-safari-trust-center/)
+- [Apple Safari Vulnerability Disclosure](https://apis.io/security/apple-safari/apple-safari-vulnerability-disclosure/)
 
-**Human URL:** [https://developer.apple.com/documentation/safariservices/safari_app_extensions](https://developer.apple.com/documentation/safariservices/safari_app_extensions)
+#### Plans and pricing (1)
 
-#### Tags:
+Published plans, tiers and prices.
 
- - App Extensions, Macos, Safari Extensions
+- [Apple Safari Plans Pricing](https://apis.io/plans/apple-safari/apple-safari-plans-pricing/)
 
-#### Properties
+#### Rate limits (1)
 
-- [Documentation](https://developer.apple.com/documentation/safariservices/safari_app_extensions)
-- [GettingStarted](https://developer.apple.com/documentation/safariservices/safari_app_extensions/building_a_safari_app_extension)
+Published request limits.
 
-### Safari Web Content API
-WebKit APIs for interacting with web content, including JavaScript evaluation and DOM manipulation.
+- [Apple Safari Rate Limits](https://apis.io/rate-limits/apple-safari/apple-safari-rate-limits/)
 
-**Human URL:** [https://developer.apple.com/documentation/webkit](https://developer.apple.com/documentation/webkit)
+#### FinOps (1)
 
-#### Tags:
+What the API costs to run, by operation.
 
- - Dom, Javascript, Web Content, Webkit
+- [Apple Safari Finops](https://apis.io/finops/apple-safari/apple-safari-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://developer.apple.com/documentation/webkit)
-- [APIReference](https://developer.apple.com/documentation/webkit/wkwebview)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Safari Services API
-iOS and macOS API for integrating Safari functionality into apps, including Safari View Controller.
-
-**Human URL:** [https://developer.apple.com/documentation/safariservices](https://developer.apple.com/documentation/safariservices)
-
-#### Tags:
-
- - Ios, Macos, Safari Services, Safari View Controller
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/safariservices)
-- [APIReference](https://developer.apple.com/documentation/safariservices/sfsafariviewcontroller)
-
-### Safari Web Push API
-API for sending push notifications to users through Safari.
-
-**Human URL:** [https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers)
-
-#### Tags:
-
- - Notifications, Push Api, Service Workers, Web Push
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers)
-
-### Safari Content Blocking API
-API for creating content blockers and declarative content blocking rules in Safari.
-
-**Human URL:** [https://developer.apple.com/documentation/safariservices/creating-a-content-blocker](https://developer.apple.com/documentation/safariservices/creating-a-content-blocker)
-
-#### Tags:
-
- - Ad Blocking, Content Blocking, Declarative Net Request, Web Filtering
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/safariservices/creating-a-content-blocker)
-- [APIReference](https://developer.apple.com/documentation/safariservices/sfcontentblockermanager)
-
-### Safari Developer Tools API
-APIs and tools for inspecting, debugging, and optimizing web content in Safari.
-
-**Human URL:** [https://developer.apple.com/documentation/safari-developer-tools](https://developer.apple.com/documentation/safari-developer-tools)
-
-#### Tags:
-
- - Debugging, Developer Tools, Web Development, Web Inspector
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/safari-developer-tools)
-
-### Safari Authentication Services API
-API for authenticating users through web services in Safari using ASWebAuthenticationSession.
-
-**Human URL:** [https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
-
-#### Tags:
-
- - Authentication, Oauth, Passkeys, Sign In, Webauthn
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession)
-
-### Apple Pay on the Web API
-JavaScript APIs for implementing Apple Pay payments in Safari.
-
-**Human URL:** [https://developer.apple.com/documentation/applepayontheweb](https://developer.apple.com/documentation/applepayontheweb)
-
-#### Tags:
-
- - Apple Pay, Javascript, Payment Request, Payments
-
-#### Properties
-
-- [Documentation](https://developer.apple.com/documentation/applepayontheweb)
-- [APIReference](https://developer.apple.com/documentation/applepayontheweb/apple-pay-js-api)
-- [Sandbox](https://applepaydemo.apple.com/)
-
-## Common Properties
-
-- [DeveloperPortal](https://developer.apple.com/safari/)
-- [ReleaseNotes](https://developer.apple.com/documentation/safari-release-notes)
-- [Resources](https://developer.apple.com/safari/resources/)
-- [Blog](https://webkit.org/blog/)
+- [Website](https://www.apple.com/)
 - [Documentation](https://docs.webkit.org/)
-- [YouTube](https://developer.apple.com/videos/safari-web/)
+- [API reference](https://developer.apple.com/documentation/safariservices)
+- [Pricing](https://developer.apple.com/programs/)
+- [Sign up](https://developer.apple.com/account/)
 - [Support](https://developer.apple.com/forums/)
-- [Features](https://www.apple.com/safari/)
-- [UseCases](https://developer.apple.com/safari/)
-- [Integrations](https://developer.apple.com/safari/extensions/)
+- [Blog](https://webkit.org/blog/)
+- [Terms of service](https://developer.apple.com/support/terms/apple-developer-agreement/)
+- [Privacy policy](https://www.apple.com/legal/privacy/)
+- [GitHub](https://github.com/WebKit)
+- [Status](https://developer.apple.com/system-status/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane, **Email:** kin@apievangelist.com
+**Kin Score 58.0** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 83.3 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 76.3 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 92.1 |
+
+**Agent readiness 12.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | documented (partial credit) |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apple-safari/](https://apis.io/providers/apple-safari/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apple Safari: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apple-safari/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
