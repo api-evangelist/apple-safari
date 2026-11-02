@@ -14,15 +14,22 @@ deliveryModel:
 specificationVersion: '0.23'
 accessModel:
   pricing: freemium
-  onboarding: unknown
+  onboarding: self-serve
   trial: false
-  try_now: false
+  try_now: true
   public: false
-  label: Freemium
-  confidence: medium
+  gated: none
+  gated_source:
+  - onboarding
+  label: Freemium · Self-serve signup
+  confidence: high
   source:
   - plans
-  generated: '2026-07-22'
+  - authentication
+  - rate-limits
+  - security
+  - sandbox
+  generated: '2026-11-02'
   method: derived
 image: https://www.apple.com/v/safari/q/images/meta/safari__bo5fx1ipmoqq_og.png
 tags:
