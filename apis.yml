@@ -29,7 +29,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-06'
+  generated: '2026-11-13'
   method: derived
 image: https://www.apple.com/v/safari/q/images/meta/safari__bo5fx1ipmoqq_og.png
 tags:
@@ -161,7 +161,7 @@ apis:
     baseURL: https://web.push.apple.com
     tags:
       - Notification
-      - Push Api
+      - Push API
       - Service Workers
       - Web Push
     tags_raw:
@@ -388,6 +388,8 @@ common:
     url: https://developer.apple.com/support/terms/apple-developer-agreement/
   - type: PrivacyPolicy
     url: https://www.apple.com/legal/privacy/
+  - type: Attestations
+    url: compliance/apple-safari-compliance.yml
 x-enrichment:
   date: '2026-09-07'
   status: enriched
