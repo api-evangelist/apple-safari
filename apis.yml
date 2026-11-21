@@ -1,3 +1,4 @@
+aid: apple-safari
 name: Apple Safari
 description: Apple's web browser available across macOS, iOS, and iPadOS, providing a fast, efficient, and private browsing experience with features like Intelligent Tracking Prevention, iCloud syncing, and web standards support.
 deliveryModel:
@@ -29,7 +30,7 @@ accessModel:
   - rate-limits
   - security
   - sandbox
-  generated: '2026-11-13'
+  generated: '2026-11-20'
   method: derived
 image: https://www.apple.com/v/safari/q/images/meta/safari__bo5fx1ipmoqq_og.png
 tags:
@@ -42,7 +43,8 @@ created: '2024'
 modified: '2026-09-07'
 url: https://www.apple.com/safari/
 apis:
-  - name: Safari Extensions API
+  - aid: apple-safari:safari-extensions-api
+    name: Safari Extensions API
     description: >-
       API for building Safari Web Extensions that extend and customize the browsing
       experience.
@@ -75,7 +77,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari App Extensions API
+  - aid: apple-safari:safari-app-extensions-api
+    name: Safari App Extensions API
     description: >-
       API for creating app extensions that add features and functionality to Safari
       on macOS.
@@ -98,7 +101,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Web Content API
+  - aid: apple-safari:safari-web-content-api
+    name: Safari Web Content API
     description: >-
       WebKit APIs for interacting with web content, including JavaScript evaluation
       and DOM manipulation.
@@ -127,7 +131,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Services API
+  - aid: apple-safari:safari-services-api
+    name: Safari Services API
     description: >-
       iOS and macOS API for integrating Safari functionality into apps, including
       Safari View Controller.
@@ -152,7 +157,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Web Push API
+  - aid: apple-safari:safari-web-push-api
+    name: Safari Web Push API
     description: >-
       API for sending push notifications to users through Safari on macOS, iOS, and
       iPadOS using the Push API, Notifications API, and Service Workers.
@@ -179,7 +185,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Content Blocking API
+  - aid: apple-safari:safari-content-blocking-api
+    name: Safari Content Blocking API
     description: >-
       API for creating content blockers and declarative content blocking rules in
       Safari web extensions to filter and block web content.
@@ -203,7 +210,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Developer Tools API
+  - aid: apple-safari:safari-developer-tools-api
+    name: Safari Developer Tools API
     description: >-
       APIs and tools for inspecting, debugging, and optimizing web content in Safari,
       including Web Inspector and the ability to add custom web development tools.
@@ -231,7 +239,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Safari Authentication Services API
+  - aid: apple-safari:safari-authentication-services-api
+    name: Safari Authentication Services API
     description: >-
       API for authenticating users through web services in Safari using ASWebAuthenticationSession,
       supporting OAuth, passkeys, and WebAuthn standards.
@@ -266,7 +275,8 @@ apis:
     contact:
       - FN: Apple Developer Support
         url: https://developer.apple.com/contact/
-  - name: Apple Pay on the Web API
+  - aid: apple-safari:apple-pay-on-the-web-api
+    name: Apple Pay on the Web API
     description: >-
       JavaScript APIs for implementing Apple Pay payments in Safari, supporting both
       the Apple Pay JS API and the Payment Request API.
